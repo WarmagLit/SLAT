@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "626865363945",
+    "firebase_url": "https://slat-d296a-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "slat-d296a",
+    "storage_bucket": "slat-d296a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626865363945:android:2515431d71539301b00978",
+        "android_client_info": {
+          "package_name": "com.tsu.slat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626865363945-fsnh196p5oetu0tmfj85n38qp7ijsuld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2ZJQ0DgP-RgZSPn66vNOs-3WbbUlcLT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626865363945-fsnh196p5oetu0tmfj85n38qp7ijsuld.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
