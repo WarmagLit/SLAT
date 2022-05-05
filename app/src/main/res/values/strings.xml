@@ -8,4 +8,6 @@
     <string name="incorrect_email">Incorrect email</string>
     <string name="small_password">Password should be at least 6 characters.</string>
     <string name="small_nickname">Nickname should be at least 4 characters.</string>
+    <string name="say_something">Say something...</string>
+    <string name="sign_out">Sign out</string>
 </resources>
