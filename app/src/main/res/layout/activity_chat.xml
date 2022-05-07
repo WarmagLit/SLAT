@@ -34,6 +34,7 @@
             android:background="@drawable/edit_text_shadow"
             android:hint="@string/say_something"
             android:inputType="text"
+            android:textColor="@color/black"
             android:padding="10dp" />
 
         <ImageView
