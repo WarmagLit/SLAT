@@ -1,4 +1,9 @@
 buildscript {
+    ext.retrofit_version = '2.9.0'
+    ext.rxAndroidVersion = '2.1.1'
+    ext.rxKotlin = '2.1.0'
+    ext.lifecycle_version = '2.4.1'
+    ext.okHttp_version = '4.8.0'
     dependencies {
         classpath 'com.google.gms:google-services:4.3.10'
     }

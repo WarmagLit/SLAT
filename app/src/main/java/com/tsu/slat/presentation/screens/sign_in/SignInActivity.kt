@@ -1,4 +1,4 @@
-package com.tsu.slat.sign_in
+package com.tsu.slat.presentation.screens.sign_in
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.tsu.slat.chat.ChatActivity
 import com.tsu.slat.databinding.ActivitySignInBinding
-import com.tsu.slat.sign_in.SignInViewModel
+import com.tsu.slat.presentation.di.SignInViewModel
 
 class SignInActivity : AppCompatActivity() {
 

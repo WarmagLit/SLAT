@@ -24,7 +24,7 @@ import com.google.firebase.storage.ktx.storage
 import com.tsu.slat.R
 import com.tsu.slat.chat.model.FriendlyMessage
 import com.tsu.slat.databinding.ActivityChatBinding
-import com.tsu.slat.sign_in.SignInActivity
+import com.tsu.slat.presentation.screens.sign_in.SignInActivity
 
 class ChatActivity : AppCompatActivity() {
 

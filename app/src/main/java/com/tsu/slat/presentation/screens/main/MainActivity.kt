@@ -1,11 +1,11 @@
-package com.tsu.slat
+package com.tsu.slat.presentation.screens.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.tsu.slat.chat.ChatActivity
 import com.tsu.slat.databinding.ActivityMainBinding
-import com.tsu.slat.sign_in.SignInActivity
+import com.tsu.slat.presentation.screens.foodsearch.FoodSearchActivity
+import com.tsu.slat.presentation.screens.sign_in.SignInActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnNext.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
+            //val intent = Intent(this, SignInActivity::class.java)
+            val intent = Intent(this, FoodSearchActivity::class.java)
             startActivity(intent)
         }
     }

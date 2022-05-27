@@ -1,10 +1,11 @@
-package com.tsu.slat.sign_in
+package com.tsu.slat.presentation.di
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tsu.slat.R
-import com.tsu.slat.data.User
+import com.tsu.slat.data.entity.User
+import com.tsu.slat.presentation.screens.sign_in.SignInRepository
 import java.util.regex.Pattern
 
 class SignInViewModel : ViewModel() {

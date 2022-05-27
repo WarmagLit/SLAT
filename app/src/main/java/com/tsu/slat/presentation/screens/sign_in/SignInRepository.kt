@@ -1,10 +1,10 @@
-package com.tsu.slat.sign_in
+package com.tsu.slat.presentation.screens.sign_in
 
 import android.util.Log
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.tsu.slat.data.User
+import com.tsu.slat.data.entity.User
 
 class SignInRepository {
 
