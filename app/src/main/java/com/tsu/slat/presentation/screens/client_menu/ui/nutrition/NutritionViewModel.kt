@@ -1,13 +1,13 @@
-package com.tsu.slat.presentation.screens.client_menu.ui.home
+package com.tsu.slat.presentation.screens.client_menu.ui.nutrition
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class NutritionViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is nutrition Fragment"
     }
     val text: LiveData<String> = _text
 }

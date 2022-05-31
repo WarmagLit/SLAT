@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/navigation_news"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/news" />
 
     <item
         android:id="@+id/navigation_nutrition"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_baseline_fastfood_24"
         android:title="@string/nutrition" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_chats"
+        android:icon="@drawable/ic_baseline_message_24"
+        android:title="@string/chats" />
 
     <item
         android:id="@+id/navigation_profile"
