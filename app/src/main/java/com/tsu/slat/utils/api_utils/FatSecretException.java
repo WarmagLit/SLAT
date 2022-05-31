@@ -1,4 +1,4 @@
-package com.tsu.slat.utils;
+package com.tsu.slat.utils.api_utils;
 
 public class FatSecretException extends Exception {
 

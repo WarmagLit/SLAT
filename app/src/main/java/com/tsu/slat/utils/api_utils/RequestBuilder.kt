@@ -1,4 +1,4 @@
-package com.tsu.slat.utils
+package com.tsu.slat.utils.api_utils
 
 import android.util.Base64
 import android.util.Log
@@ -13,27 +13,12 @@ import javax.crypto.spec.SecretKeySpec
 
 object RequestBuilder {
 
-    /**
-     * app segnature method that is wanted from the api
-     */
     private val APP_SIGNATURE_METHOD = "HmacSHA1"
 
-    /**
-     * http method that is used
-     */
     private val HTTP_METHOD = "GET"
 
-    /**
-     * base url that is fetched
-     */
     private val APP_URL = "https://platform.fatsecret.com/rest/server.api"
 
-    /**
-     * buildAuthParams builds a Array of Strings that has current authorities
-     * demanded by fatSecret API
-     *
-     * @return array of the authorities
-     */
     private fun buildAuthParams(oAuthQuery: OAuthQuery)  {
         oAuthQuery.oauth_consumer_key = "f0ab4d1c295f45e1bdd8376cb3a99f72"
         oAuthQuery.oauth_signature_method = "HMAC-SHA1"
@@ -72,6 +57,8 @@ object RequestBuilder {
         oauth.method=  "food.get.v2"
         oauth.oauth_signature = sign(paramsIdToArray(oauth, id))
 
+        Log.d("Result", oauth.oauth_signature!!)
+
         //return this.APP_URL + "?" + paramsToString(params.toTypedArray())
         return oauth
     }
@@ -83,7 +70,6 @@ object RequestBuilder {
         oauth.method=  "foods.search"
         oauth.oauth_signature = sign(paramsSearchToArray(oauth, food))
 
-        //return this.APP_URL + "?" + paramsToString(params.toTypedArray())
         return oauth
     }
 
@@ -98,6 +84,7 @@ object RequestBuilder {
 
         res += "method=" + oauth.method
         res += "food_id=" + food_id
+
         return res
     }
 
@@ -112,15 +99,13 @@ object RequestBuilder {
 
         res += "method=" + oauth.method
         res += "search_expression=" + food
+
+        res+= "region=RU"
+        res+= "language=ru"
         return res
     }
 
-    /**
-     * encode encodes the given string and replaces unwanted characters
-     *
-     * @param encodable the string that is encoded
-     * @return the string that is encoded
-     */
+
     private fun encode(encodable: String) : String {
         return try {
             URLEncoder.encode(encodable, "utf-8")
@@ -135,12 +120,7 @@ object RequestBuilder {
         }
     }
 
-    /**
-     * paramsToString gets the array and joins it to a string with & separator
-     *
-     * @param params the array of params for the fetch url
-     * @return the string with & separator
-     */
+
     fun paramsToString(params: Array<String>) : String {
         val p = params
         Arrays.sort(p)
@@ -155,18 +135,21 @@ object RequestBuilder {
      * @return a string with the unique signature
      */
     fun sign(params: Array<String>) : String {
-        val encodedURI: String = encode(this.APP_URL)
+        val encodedURI: String = encode(APP_URL)
+        Log.d("BeforeEncode", paramsToString(params))
         val encodedParams = encode(paramsToString(params))
+        Log.d("After", encodedParams)
 
-        val p = arrayOf(this.HTTP_METHOD, encodedURI, encodedParams)
+        val p = arrayOf(HTTP_METHOD, encodedURI, encodedParams)
         val text = p.joinToString(separator = "&")
         val key = "346f6ebeb8c14366bd664b9ca23db133" + "&"
-        val secretKey = SecretKeySpec(key.toByteArray(), this.APP_SIGNATURE_METHOD)
+        val secretKey = SecretKeySpec(key.toByteArray(), APP_SIGNATURE_METHOD)
         var sign = ""
         try {
-            val m: Mac = Mac.getInstance(this.APP_SIGNATURE_METHOD)
+            val m: Mac = Mac.getInstance(APP_SIGNATURE_METHOD)
             m.init(secretKey)
-            sign = encode(String(Base64.encode(m.doFinal(text.toByteArray()), Base64.DEFAULT)).trim())
+            //sign = encode(String(Base64.encode(m.doFinal(text.toByteArray()), Base64.DEFAULT)).trim())
+            sign = String(Base64.encode(m.doFinal(text.toByteArray()), Base64.DEFAULT)).trim()
         } catch (e: NoSuchAlgorithmException) {
             println("NoSuchAlgorithmException: " + e.message)
         } catch (e: InvalidKeyException) {
@@ -181,16 +164,9 @@ object RequestBuilder {
      *
      * @return the randomly generated value for nonce.
      */
-    fun nonce(): String {/*
-        val r = Random()
-        val n = StringBuffer()
-        for (i in 0 until r.nextInt(8) + 2) {
-            n.append(r.nextInt(26).toString() + 'a')
-        }
-        Log.d("tag", n.toString())
-        return n.toString()*/
+    fun nonce(): String {
         val r = Random()
         return (r.nextDouble() * 100000).toInt().toString()
-        //return "93434"
+
     }
 }

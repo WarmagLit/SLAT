@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.tsu.slat.data.api.Network
-import com.tsu.slat.data.repository.NutritionRemoteDataSourceImpl
-import com.tsu.slat.data.repository.NutritionRepositoryImpl
 import com.tsu.slat.databinding.ActivityFoodSearchBinding
-import com.tsu.slat.databinding.ActivityMainBinding
 import com.tsu.slat.domain.usecases.GetNutritionUseCase
-import com.tsu.slat.utils.RequestBuilder
+import com.tsu.slat.utils.api_utils.RequestBuilder
 import com.tsu.slat.utils.RequestTestBuilder
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -33,8 +30,6 @@ class FoodSearchActivity : AppCompatActivity() {
                     val params = RequestBuilder.getFoodById("33691")
                     useCase.getFood("33691", params)
                     Log.d("taf",RequestTestBuilder.getFoodById("33691"))
-                    //useCase.getFood("chicken")
-                    //Log.d("taf",RequestBuilder.getFoodById("33691"))
                 }
                 println("Hello")
             }
@@ -43,11 +38,8 @@ class FoodSearchActivity : AppCompatActivity() {
         binding.button3.setOnClickListener {
             runBlocking {
                 launch {
-                    val params = RequestBuilder.findFood("chicken")
-                    useCase.findFood("chicken", params)
-                    //Log.d("taf",RequestTestBuilder.getFoodById("33691"))
-                    //useCase.getFood("chicken")
-                    //Log.d("taf",RequestBuilder.getFoodById("33691"))
+                    val params = RequestBuilder.findFood("Киндер")
+                    useCase.findFood("Киндер", params)
                 }
             }
         }

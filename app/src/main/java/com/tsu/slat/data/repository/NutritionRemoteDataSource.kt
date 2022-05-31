@@ -58,7 +58,7 @@ class NutritionRemoteDataSourceImpl(private val nutritionApi: NutritionApi) : Nu
     override suspend fun findFood(food: String, params: OAuthQuery): Response<CompactFood> {
         params.oauth_signature = params.oauth_signature!!.replace("%3D", "=")
         Log.d("Tag", "Signature: " +  params.oauth_signature!!)
-        return nutritionApi.getNutrition(
+        return nutritionApi.searchFood(
             food,
             params.format!!,
             params.method!!,
@@ -67,25 +67,11 @@ class NutritionRemoteDataSourceImpl(private val nutritionApi: NutritionApi) : Nu
             params.oauth_signature!!,
             params.oauth_signature_method!!,
             params.oauth_timestamp!!,
-            params.version
+            params.version,
+            "RU",
+            "ru"
         )
     }
 
-    private val HMAC_SHA1_ALGORITHM = "HmacSHA1"
-
-    private fun toHexString(bytes: ByteArray): String {
-        val formatter = Formatter()
-        for (b in bytes) {
-            formatter.format("%02x", b)
-        }
-        return formatter.toString()
-    }
-
-    fun calculateRFC2104HMAC(data: String, key: String): String {
-        val signingKey = SecretKeySpec(key.toByteArray(), HMAC_SHA1_ALGORITHM)
-        val mac: Mac = Mac.getInstance(HMAC_SHA1_ALGORITHM)
-        mac.init(signingKey)
-        return toHexString(mac.doFinal(data.toByteArray()))
-    }
 
 }

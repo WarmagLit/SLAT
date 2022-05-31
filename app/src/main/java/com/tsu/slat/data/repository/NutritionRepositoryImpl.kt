@@ -10,6 +10,6 @@ class NutritionRepositoryImpl(private val nutritionDatasource: NutritionRemoteDa
     }
 
     override suspend fun findFood(food: String, params: OAuthQuery): Response<CompactFood> {
-        return nutritionDatasource.getFoodById(food, params)
+        return nutritionDatasource.findFood(food, params)
     }
 }

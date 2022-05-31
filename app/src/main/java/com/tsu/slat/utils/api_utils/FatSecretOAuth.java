@@ -1,4 +1,4 @@
-package com.tsu.slat.utils;
+package com.tsu.slat.utils.api_utils;
 
 //
 // Source code recreated from a .class file by IntelliJ IDEA

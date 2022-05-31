@@ -1,4 +1,4 @@
-package com.tsu.slat.utils;
+package com.tsu.slat.utils.api_utils;
 
 public class FatSecretAuth {
     private String token, secret;

@@ -1,4 +1,4 @@
-package com.tsu.slat.utils;
+package com.tsu.slat.utils.api_utils;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
