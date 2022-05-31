@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.tsu.slat.chat
+package com.tsu.slat.presentation.screens.chat
 
 import android.content.Context
 import android.content.Intent

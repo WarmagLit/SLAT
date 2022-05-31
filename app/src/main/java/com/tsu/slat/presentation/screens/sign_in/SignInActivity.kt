@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.tsu.slat.chat.ChatActivity
+import com.tsu.slat.presentation.screens.chat.ChatActivity
 import com.tsu.slat.databinding.ActivitySignInBinding
 import com.tsu.slat.presentation.di.SignInViewModel
 

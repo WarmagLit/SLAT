@@ -1,4 +1,4 @@
-package com.tsu.slat.chat
+package com.tsu.slat.presentation.screens.chat
 
 import android.content.Intent
 import android.net.Uri
@@ -22,7 +22,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.tsu.slat.R
-import com.tsu.slat.chat.model.FriendlyMessage
+import com.tsu.slat.presentation.screens.chat.model.FriendlyMessage
 import com.tsu.slat.databinding.ActivityChatBinding
 import com.tsu.slat.presentation.screens.sign_in.SignInActivity
 

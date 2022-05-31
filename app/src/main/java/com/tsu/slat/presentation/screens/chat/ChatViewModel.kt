@@ -1,4 +1,4 @@
-package com.tsu.slat.chat
+package com.tsu.slat.presentation.screens.chat
 
 import androidx.lifecycle.ViewModel
 

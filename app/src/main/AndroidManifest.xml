@@ -13,13 +13,17 @@
         android:theme="@style/Theme.Slat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.screens.client_menu.ClientMenuActivity"
+            android:exported="false"
+            android:label="@string/title_activity_client_menu" />
+        <activity
             android:name=".presentation.screens.foodsearch.FoodSearchActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.screens.sign_in.SignInActivity"
             android:exported="true" />
         <activity
-            android:name=".chat.ChatActivity"
+            android:name=".presentation.screens.chat.ChatActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.screens.main.MainActivity"

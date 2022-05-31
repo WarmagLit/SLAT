@@ -18,7 +18,7 @@ package com.google.firebase.codelab.friendlychat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
-import com.tsu.slat.chat.FriendlyMessageAdapter
+import com.tsu.slat.presentation.screens.chat.FriendlyMessageAdapter
 
 class MyScrollToBottomObserver(
     private val recycler: RecyclerView,

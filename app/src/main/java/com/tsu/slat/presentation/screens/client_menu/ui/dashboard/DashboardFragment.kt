@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.tsu.slat.presentation.screens.client_menu.databinding.FragmentDashboardBinding
+import com.tsu.slat.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 

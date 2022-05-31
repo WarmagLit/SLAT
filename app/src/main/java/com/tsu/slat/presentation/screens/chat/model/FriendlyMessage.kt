@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.tsu.slat.chat.model
+package com.tsu.slat.presentation.screens.chat.model
 
 class FriendlyMessage {
     var text: String? = null

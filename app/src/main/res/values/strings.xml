@@ -10,4 +10,11 @@
     <string name="small_nickname">Nickname should be at least 4 characters.</string>
     <string name="say_something">Say something...</string>
     <string name="sign_out">Sign out</string>
+    <string name="title_activity_client_menu">ClientMenuActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <string name="news">News</string>
+    <string name="nutrition">Nutrition</string>
 </resources>

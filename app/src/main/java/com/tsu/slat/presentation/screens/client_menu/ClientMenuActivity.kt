@@ -7,7 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.tsu.slat.presentation.screens.client_menu.databinding.ActivityClientMenuBinding
+import com.tsu.slat.R
+import com.tsu.slat.databinding.ActivityClientMenuBinding
 
 class ClientMenuActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class ClientMenuActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_news, R.id.navigation_nutrition, R.id.navigation_notifications
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

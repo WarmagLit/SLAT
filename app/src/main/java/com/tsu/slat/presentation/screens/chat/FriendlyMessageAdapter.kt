@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.tsu.slat.chat
+package com.tsu.slat.presentation.screens.chat
 
 import android.graphics.Color
 import android.util.Log
@@ -28,8 +28,8 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.tsu.slat.R
-import com.tsu.slat.chat.ChatActivity.Companion.ANONYMOUS
-import com.tsu.slat.chat.model.FriendlyMessage
+import com.tsu.slat.presentation.screens.chat.ChatActivity.Companion.ANONYMOUS
+import com.tsu.slat.presentation.screens.chat.model.FriendlyMessage
 import com.tsu.slat.databinding.ImageMessageBinding
 import com.tsu.slat.databinding.MessageBinding
 
