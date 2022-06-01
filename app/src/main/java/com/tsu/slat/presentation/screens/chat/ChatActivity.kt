@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserInfo
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.codelab.friendlychat.MyButtonObserver
 import com.google.firebase.codelab.friendlychat.MyScrollToBottomObserver
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -22,9 +25,13 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.tsu.slat.R
+import com.tsu.slat.data.entity.MessageResponse
+import com.tsu.slat.data.entity.User
+import com.tsu.slat.data.entity.UserMessageInfo
 import com.tsu.slat.presentation.screens.chat.model.FriendlyMessage
 import com.tsu.slat.databinding.ActivityChatBinding
 import com.tsu.slat.presentation.screens.sign_in.SignInActivity
+import java.util.*
 
 class ChatActivity : AppCompatActivity() {
 
@@ -36,6 +43,10 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
     private lateinit var adapter: FriendlyMessageAdapter
+
+    private var chatId = "123456"
+
+    private lateinit var userInfo: UserMessageInfo
 
     private val openDocument = registerForActivityResult(MyOpenDocumentContract()) { uri ->
         onImageSelected(uri!!)
@@ -57,12 +68,14 @@ class ChatActivity : AppCompatActivity() {
 
         // Initialize Realtime Database
         db = Firebase.database
-        val messagesRef = db.reference.child(MESSAGES_CHILD)
+        val messagesRef = db.reference.child(CHATS_CHILD).child(chatId)
+
+        getUserMessageInfo()
 
         // The FirebaseRecyclerAdapter class and options come from the FirebaseUI library
         // See: https://github.com/firebase/FirebaseUI-Android
-        val options = FirebaseRecyclerOptions.Builder<FriendlyMessage>()
-            .setQuery(messagesRef, FriendlyMessage::class.java)
+        val options = FirebaseRecyclerOptions.Builder<MessageResponse>()
+            .setQuery(messagesRef, MessageResponse::class.java)
             .build()
         adapter = FriendlyMessageAdapter(options, getUserName())
         binding.progressBar.visibility = ProgressBar.INVISIBLE
@@ -70,6 +83,7 @@ class ChatActivity : AppCompatActivity() {
         manager.stackFromEnd = true
         binding.messageRecyclerView.layoutManager = manager
         binding.messageRecyclerView.adapter = adapter
+        binding.messageRecyclerView.itemAnimator = null
 
         // Scroll down when a new message arrives
         // See MyScrollToBottomObserver for details
@@ -83,13 +97,14 @@ class ChatActivity : AppCompatActivity() {
 
         // When the send button is clicked, send a text message
         binding.sendButton.setOnClickListener {
-            val friendlyMessage = FriendlyMessage(
+            val friendlyMessage = MessageResponse(
+                "iddddd",
                 binding.messageEditText.text.toString(),
-                getUserName(),
-                getPhotoUrl(),
+                Date().time.toString(),
+                userInfo,
                 null
             )
-            db.reference.child(MESSAGES_CHILD).push().setValue(friendlyMessage)
+            db.reference.child(CHATS_CHILD).child(chatId).push().setValue(friendlyMessage)
             binding.messageEditText.setText("")
         }
 
@@ -98,6 +113,15 @@ class ChatActivity : AppCompatActivity() {
             openDocument.launch(arrayOf("image/*"))
         }
     }
+
+    private fun getUserMessageInfo() {
+        val uid = auth.currentUser?.uid
+        val name = auth.currentUser?.displayName
+        val photo = getPhotoUrl()
+
+        userInfo = UserMessageInfo(uid, name, photo)
+    }
+
 
     public override fun onStart() {
         super.onStart()
@@ -139,9 +163,16 @@ class ChatActivity : AppCompatActivity() {
     private fun onImageSelected(uri: Uri) {
         Log.d(TAG, "Uri: $uri")
         val user = auth.currentUser
-        val tempMessage = FriendlyMessage(null, getUserName(), getPhotoUrl(), LOADING_IMAGE_URL)
+        val tempMessage =  MessageResponse(
+            "iddddd",
+            null,
+            Date().time.toString(),
+            userInfo,
+            LOADING_IMAGE_URL
+        )
         db.reference
-            .child(MESSAGES_CHILD)
+            .child(CHATS_CHILD)
+            .child(chatId)
             .push()
             .setValue(
                 tempMessage,
@@ -173,10 +204,16 @@ class ChatActivity : AppCompatActivity() {
                 // and add it to the message.
                 taskSnapshot.metadata!!.reference!!.downloadUrl
                     .addOnSuccessListener { uri ->
-                        val friendlyMessage =
-                            FriendlyMessage(null, getUserName(), getPhotoUrl(), uri.toString())
+                        val friendlyMessage = MessageResponse(
+                            "iddddd",
+                            null,
+                            Date().time.toString(),
+                            userInfo,
+                            uri.toString()
+                        )
                         db.reference
-                            .child(MESSAGES_CHILD)
+                            .child(CHATS_CHILD)
+                            .child(chatId)
                             .child(key!!)
                             .setValue(friendlyMessage)
                     }
@@ -202,7 +239,9 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun getUserName(): String? {
+
         val user = auth.currentUser
+
         return if (user != null) {
             user.displayName
         } else ANONYMOUS
@@ -211,6 +250,7 @@ class ChatActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "MainActivity"
         const val MESSAGES_CHILD = "messages"
+        const val CHATS_CHILD = "chats"
         const val ANONYMOUS = "anonymous"
         private const val LOADING_IMAGE_URL = "https://www.google.com/images/spin-32.gif"
     }

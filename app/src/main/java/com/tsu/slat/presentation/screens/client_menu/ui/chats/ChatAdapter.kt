@@ -1,5 +1,6 @@
-package com.tsu.itindr.MainScreen.ui.chats
+package com.tsu.slat.presentation.screens.client_menu.ui.chats
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -24,16 +25,16 @@ class ChatAdapter(val context: Context, private val listener: OnItemClickListene
         val binding = ChatItemBinding.bind(item)
         private lateinit var userId: String
         fun bind(chatResponse: ChatResponse) = with(binding){
-            if (chatResponse.chat.avatar != null && chatResponse.chat.avatar != "")
+            if (chatResponse.chat!!.avatar != null && chatResponse.chat!!.avatar != "")
                 loadImageWithUri(imageAvatar, chatResponse.chat.avatar)
             else
                 imageAvatar.setImageResource(R.drawable.ic_account_circle_black_36dp)
-            textName.text = chatResponse.chat.title
+            textName.text = chatResponse.chat!!.title
             if (chatResponse.lastMessage?.text != "null")
                 textLastMessage.text = chatResponse.lastMessage?.text
             else
                 textLastMessage.text = "-"
-            userId = chatResponse.chat.id
+            userId = chatResponse.chat!!.id
         }
         private fun loadImageWithUri(imageView: ImageView, imageUri: String){
             Glide.with(imageView.context).load(Uri.parse(imageUri)).diskCacheStrategy(
@@ -64,8 +65,8 @@ class ChatAdapter(val context: Context, private val listener: OnItemClickListene
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ChatActivity::class.java)
-            intent.putExtra("title", chatList[position].chat.title)
-            intent.putExtra("chatId", chatList[position].chat.id)
+            intent.putExtra("title", chatList[position].chat!!.title)
+            intent.putExtra("chatId", chatList[position].chat!!.id)
             context.startActivity(intent)
         }
 
@@ -75,6 +76,7 @@ class ChatAdapter(val context: Context, private val listener: OnItemClickListene
         return chatList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addChat(chat: ChatResponse) {
         chatList.add(chat)
         notifyDataSetChanged()

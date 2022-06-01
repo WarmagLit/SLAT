@@ -10,4 +10,6 @@ class ChatsViewModel : ViewModel() {
         value = "This is chats Fragment"
     }
     val text: LiveData<String> = _text
+
+
 }
