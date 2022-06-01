@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ProgressBar
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -30,6 +32,7 @@ import com.tsu.slat.data.entity.User
 import com.tsu.slat.data.entity.UserMessageInfo
 import com.tsu.slat.presentation.screens.chat.model.FriendlyMessage
 import com.tsu.slat.databinding.ActivityChatBinding
+import com.tsu.slat.domain.usecases.GetChatUseCase
 import com.tsu.slat.presentation.screens.sign_in.SignInActivity
 import java.util.*
 
@@ -44,18 +47,24 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var db: FirebaseDatabase
     private lateinit var adapter: FriendlyMessageAdapter
 
-    private var chatId = "123456"
+    //private var chatId = "123456"
 
     private lateinit var userInfo: UserMessageInfo
 
-    private val openDocument = registerForActivityResult(MyOpenDocumentContract()) { uri ->
-        onImageSelected(uri!!)
-    }
+    private lateinit var chatViewModel: ChatViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val chatId = intent.getStringExtra("chatId").toString()
+
+        chatViewModel = ChatViewModel(GetChatUseCase(), chatId)
+
+        val openDocument = registerForActivityResult(MyOpenDocumentContract()) { uri ->
+            chatViewModel.onImageSelected(uri!!)
+        }
 
         // Initialize Firebase Auth and check if the user is signed in
         auth = Firebase.auth
@@ -97,14 +106,7 @@ class ChatActivity : AppCompatActivity() {
 
         // When the send button is clicked, send a text message
         binding.sendButton.setOnClickListener {
-            val friendlyMessage = MessageResponse(
-                "iddddd",
-                binding.messageEditText.text.toString(),
-                Date().time.toString(),
-                userInfo,
-                null
-            )
-            db.reference.child(CHATS_CHILD).child(chatId).push().setValue(friendlyMessage)
+            chatViewModel.sendMessage(binding.messageEditText.text.toString())
             binding.messageEditText.setText("")
         }
 
@@ -158,73 +160,6 @@ class ChatActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun onImageSelected(uri: Uri) {
-        Log.d(TAG, "Uri: $uri")
-        val user = auth.currentUser
-        val tempMessage =  MessageResponse(
-            "iddddd",
-            null,
-            Date().time.toString(),
-            userInfo,
-            LOADING_IMAGE_URL
-        )
-        db.reference
-            .child(CHATS_CHILD)
-            .child(chatId)
-            .push()
-            .setValue(
-                tempMessage,
-                DatabaseReference.CompletionListener { databaseError, databaseReference ->
-                    if (databaseError != null) {
-                        Log.w(
-                            TAG, "Unable to write message to database.",
-                            databaseError.toException()
-                        )
-                        return@CompletionListener
-                    }
-
-                    // Build a StorageReference and then upload the file
-                    val key = databaseReference.key
-                    val storageReference = Firebase.storage
-                        .getReference(user!!.uid)
-                        .child(key!!)
-                        .child(uri.lastPathSegment!!)
-                    putImageInStorage(storageReference, uri, key)
-                })
-    }
-
-    private fun putImageInStorage(storageReference: StorageReference, uri: Uri, key: String?) {
-        // First upload the image to Cloud Storage
-        storageReference.putFile(uri)
-            .addOnSuccessListener(
-                this
-            ) { taskSnapshot -> // After the image loads, get a public downloadUrl for the image
-                // and add it to the message.
-                taskSnapshot.metadata!!.reference!!.downloadUrl
-                    .addOnSuccessListener { uri ->
-                        val friendlyMessage = MessageResponse(
-                            "iddddd",
-                            null,
-                            Date().time.toString(),
-                            userInfo,
-                            uri.toString()
-                        )
-                        db.reference
-                            .child(CHATS_CHILD)
-                            .child(chatId)
-                            .child(key!!)
-                            .setValue(friendlyMessage)
-                    }
-            }
-            .addOnFailureListener(this) { e ->
-                Log.w(
-                    TAG,
-                    "Image upload task was unsuccessful.",
-                    e
-                )
-            }
     }
 
     private fun signOut() {

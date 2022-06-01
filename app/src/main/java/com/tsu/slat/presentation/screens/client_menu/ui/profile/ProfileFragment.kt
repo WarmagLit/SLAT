@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.tsu.slat.R
 import com.tsu.slat.databinding.FragmentProfileBinding
-import com.tsu.slat.presentation.screens.client_menu.ui.chats.ChatsViewModel
 
 class ProfileFragment : Fragment() {
 
