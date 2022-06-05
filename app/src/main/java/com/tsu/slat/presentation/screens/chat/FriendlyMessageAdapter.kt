@@ -30,7 +30,6 @@ import com.google.firebase.storage.ktx.storage
 import com.tsu.slat.R
 import com.tsu.slat.data.entity.MessageResponse
 import com.tsu.slat.presentation.screens.chat.ChatActivity.Companion.ANONYMOUS
-import com.tsu.slat.presentation.screens.chat.model.FriendlyMessage
 import com.tsu.slat.databinding.ImageMessageBinding
 import com.tsu.slat.databinding.MessageBinding
 
