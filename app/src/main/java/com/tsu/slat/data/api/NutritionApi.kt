@@ -1,11 +1,8 @@
 package com.tsu.slat.data.api
 
 import com.fatsecret.platform.model.CompactFood
-import com.tsu.slat.data.entity.Foods
 import retrofit2.Response
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NutritionApi {

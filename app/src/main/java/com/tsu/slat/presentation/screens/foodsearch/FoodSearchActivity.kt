@@ -24,7 +24,7 @@ class FoodSearchActivity : AppCompatActivity() {
 
         val useCase = GetNutritionUseCase(Network.nutritionRepository)
 
-        binding.button2.setOnClickListener {
+        binding.btnGetFoodById.setOnClickListener {
             runBlocking {
                 launch {
                     val params = RequestBuilder.getFoodById("33691")
@@ -35,7 +35,7 @@ class FoodSearchActivity : AppCompatActivity() {
             }
         }
 
-        binding.button3.setOnClickListener {
+        binding.btnSearchFood.setOnClickListener {
             runBlocking {
                 launch {
                     val params = RequestBuilder.findFood("Киндер")

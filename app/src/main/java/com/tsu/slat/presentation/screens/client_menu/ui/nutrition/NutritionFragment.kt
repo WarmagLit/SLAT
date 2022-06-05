@@ -1,5 +1,6 @@
 package com.tsu.slat.presentation.screens.client_menu.ui.nutrition
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.tsu.slat.databinding.FragmentNutritionBinding
+import com.tsu.slat.presentation.screens.foodsearch.FoodSearchActivity
 
 class NutritionFragment : Fragment() {
 
@@ -32,6 +34,12 @@ class NutritionFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        binding.btnFoodSearch.setOnClickListener {
+            val intent = Intent(requireContext(), FoodSearchActivity::class.java)
+            startActivity(intent)
+        }
+
         return root
     }
 

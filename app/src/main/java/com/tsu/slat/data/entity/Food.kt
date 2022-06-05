@@ -5,5 +5,9 @@ data class Food(
     val food_id : Int,
     val food_name : String,
     val food_type : String,
-    val food_url : String
+    val food_url : String,
+    val servings: Serving
 )
+
+
+
