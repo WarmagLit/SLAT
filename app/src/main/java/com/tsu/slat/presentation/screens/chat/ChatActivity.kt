@@ -4,33 +4,23 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ProgressBar
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserInfo
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.codelab.friendlychat.MyButtonObserver
 import com.google.firebase.codelab.friendlychat.MyScrollToBottomObserver
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
 import com.tsu.slat.R
 import com.tsu.slat.data.entity.MessageResponse
-import com.tsu.slat.data.entity.User
 import com.tsu.slat.data.entity.UserMessageInfo
-import com.tsu.slat.presentation.screens.chat.model.FriendlyMessage
 import com.tsu.slat.databinding.ActivityChatBinding
 import com.tsu.slat.domain.usecases.GetChatUseCase
 import com.tsu.slat.presentation.screens.sign_in.SignInActivity
@@ -47,11 +37,11 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var db: FirebaseDatabase
     private lateinit var adapter: FriendlyMessageAdapter
 
-    //private var chatId = "123456"
-
     private lateinit var userInfo: UserMessageInfo
 
     private lateinit var chatViewModel: ChatViewModel
+
+    private lateinit var openDocument: ActivityResultLauncher<Array<String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +52,7 @@ class ChatActivity : AppCompatActivity() {
 
         chatViewModel = ChatViewModel(GetChatUseCase(), chatId)
 
-        val openDocument = registerForActivityResult(MyOpenDocumentContract()) { uri ->
+        openDocument = registerForActivityResult(MyOpenDocumentContract()) { uri ->
             chatViewModel.onImageSelected(uri!!)
         }
 
@@ -77,22 +67,12 @@ class ChatActivity : AppCompatActivity() {
 
         // Initialize Realtime Database
         db = Firebase.database
-        val messagesRef = db.reference.child(CHATS_CHILD).child(chatId)
 
         getUserMessageInfo()
 
-        // The FirebaseRecyclerAdapter class and options come from the FirebaseUI library
-        // See: https://github.com/firebase/FirebaseUI-Android
-        val options = FirebaseRecyclerOptions.Builder<MessageResponse>()
-            .setQuery(messagesRef, MessageResponse::class.java)
-            .build()
-        adapter = FriendlyMessageAdapter(options, getUserName())
         binding.progressBar.visibility = ProgressBar.INVISIBLE
-        manager = LinearLayoutManager(this)
-        manager.stackFromEnd = true
-        binding.messageRecyclerView.layoutManager = manager
-        binding.messageRecyclerView.adapter = adapter
-        binding.messageRecyclerView.itemAnimator = null
+
+        initRecycler()
 
         // Scroll down when a new message arrives
         // See MyScrollToBottomObserver for details
@@ -100,6 +80,25 @@ class ChatActivity : AppCompatActivity() {
             MyScrollToBottomObserver(binding.messageRecyclerView, adapter, manager)
         )
 
+        setListeners()
+    }
+
+    private fun initRecycler() {
+        val chatId = intent.getStringExtra("chatId").toString()
+        val messagesRef = db.reference.child(CHATS_CHILD).child(chatId)
+        val options = FirebaseRecyclerOptions.Builder<MessageResponse>()
+            .setQuery(messagesRef, MessageResponse::class.java)
+            .build()
+        adapter = FriendlyMessageAdapter(options, getUserName())
+
+        manager = LinearLayoutManager(this)
+        manager.stackFromEnd = true
+        binding.messageRecyclerView.layoutManager = manager
+        binding.messageRecyclerView.adapter = adapter
+        binding.messageRecyclerView.itemAnimator = null
+    }
+
+    private fun setListeners() {
         // Disable the send button when there's no text in the input field
         // See MyButtonObserver for details
         binding.messageEditText.addTextChangedListener(MyButtonObserver(binding.sendButton))
@@ -114,8 +113,8 @@ class ChatActivity : AppCompatActivity() {
         binding.addMessageImageView.setOnClickListener {
             openDocument.launch(arrayOf("image/*"))
         }
-    }
 
+    }
     private fun getUserMessageInfo() {
         val uid = auth.currentUser?.uid
         val name = auth.currentUser?.displayName
