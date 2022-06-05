@@ -15,10 +15,14 @@ class FoodSearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFoodSearchBinding
 
+    private lateinit var viewModel: FoodSearchViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFoodSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel = FoodSearchViewModel()
 
         Network.createRepository(this)
 
