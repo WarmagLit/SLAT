@@ -1,22 +1,27 @@
-package com.tsu.slat.presentation.screens.sign_in
+package com.tsu.slat.presentation.screens.sign_up
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import com.tsu.slat.presentation.screens.chat.ChatActivity
+import com.tsu.slat.R
 import com.tsu.slat.databinding.ActivitySignInBinding
+import com.tsu.slat.databinding.ActivitySignUpBinding
+import com.tsu.slat.presentation.screens.chat.ChatActivity
 import com.tsu.slat.presentation.screens.client_menu.ClientMenuActivity
+import com.tsu.slat.presentation.screens.sign_in.SignInViewModel
 
-class SignInActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySignInBinding
-    private val viewModel by viewModels<SignInViewModel>()
+    private lateinit var binding: ActivitySignUpBinding
+    private val viewModel by viewModels<SignUpViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignInBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_sign_up)
+
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setOnClickListeners()
@@ -34,14 +39,18 @@ class SignInActivity : AppCompatActivity() {
 
     private fun setOnClickListeners() {
 
-        binding.btnLogIn.setOnClickListener {
-            viewModel.login(
+        binding.btnStart.setOnClickListener {
+
+            viewModel.signUp(
                 email = binding.editEmail.text.toString(),
-                password = binding.editPass.text.toString()
+                password = binding.editPass.text.toString(),
+                nickname = binding.editName.text.toString()
             ) { resId ->
                 Toast.makeText(this, resources.getString(resId), Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
 
     public override fun onStart() {
