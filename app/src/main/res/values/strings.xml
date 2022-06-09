@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">SLAT</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="name">Name</string>
+    <string name="incorrect_email">Incorrect email</string>
+    <string name="small_password">Password should be at least 6 characters.</string>
+    <string name="small_nickname">Nickname should be at least 4 characters.</string>
+    <string name="say_something">Say something…</string>
+    <string name="sign_out">Sign out</string>
+    <string name="title_activity_client_menu">ClientMenuActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <string name="news">News</string>
+    <string name="nutrition">Nutrition</string>
+    <string name="chats">Chats</string>
+    <string name="description">Description</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="create_your_account">Create your account</string>
+    <string name="cont_with_google">CONTINUE WITH GOOGLE</string>
+    <string name="or_sign_up_with_email">OR SIGN UP WITH EMAIL</string>
+    <string name="i_have_read">I HAVE READ THE PRIVACE POLICY</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="continue_with_facebook">Continue with facebook</string>
+    <string name="continue_with_google">Continue with google</string>
+    <string name="or_log_in_with_email">OR LOG IN WITH EMAIL</string>
+    <string name="e_mail">E-mail</string>
+    <string name="log_in">Log in</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="already_have_an_account">ALREADY HAVE AN ACCOUNT?</string>
+    <string name="don_t_have_an_account">DON\'T HAVE AN ACCOUNT?</string>
+    <string name="get_started">Get Started</string>
 </resources>
