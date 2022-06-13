@@ -83,4 +83,7 @@ dependencies {
     // FatSecretAPI
     implementation "com.fatsecret4j:fatsecret-platform:2.0"
    // implementation "com.android.volley:volley:1.2.1"
+
+    //round image
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }
