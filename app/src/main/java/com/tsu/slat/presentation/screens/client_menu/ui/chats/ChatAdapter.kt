@@ -64,10 +64,12 @@ class ChatAdapter(val context: Context, private val listener: OnItemClickListene
         holder.bind(chatList[position])
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, ChatActivity::class.java)
-            intent.putExtra("title", chatList[position].chat!!.title)
-            intent.putExtra("chatId", chatList[position].chat!!.id)
-            context.startActivity(intent)
+            val chat = chatList[position].chat
+            if (chat != null) {
+                val intent = Intent(context, ChatActivity::class.java)
+                intent.putExtra("current_chat", chat)
+                context.startActivity(intent)
+            }
         }
 
     }

@@ -42,8 +42,8 @@ class FoodSearchActivity : AppCompatActivity() {
         binding.btnSearchFood.setOnClickListener {
             runBlocking {
                 launch {
-                    val params = RequestBuilder.findFood("Киндер")
-                    useCase.findFood("Киндер", params)
+                    val params = RequestBuilder.getFoodByBarcode("802726425705")
+                    useCase.findBarcode("802726425705", params)
                 }
             }
         }

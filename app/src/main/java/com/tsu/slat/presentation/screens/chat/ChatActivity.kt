@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ProgressBar
@@ -19,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.tsu.slat.R
+import com.tsu.slat.data.entity.Chat
 import com.tsu.slat.data.entity.MessageResponse
 import com.tsu.slat.data.entity.UserMessageInfo
 import com.tsu.slat.databinding.ActivityChatBinding
@@ -48,9 +50,16 @@ class ChatActivity : AppCompatActivity() {
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val chatId = intent.getStringExtra("chatId").toString()
+        val chat = intent.getParcelableExtra<Chat>("current_chat")
 
-        chatViewModel = ChatViewModel(GetChatUseCase(), chatId)
+        Log.d("Tag", chat.toString())
+
+        if (chat == null) {
+            finish()
+            return
+        }
+
+        chatViewModel = ChatViewModel(GetChatUseCase(), chat.id)
 
         openDocument = registerForActivityResult(MyOpenDocumentContract()) { uri ->
             chatViewModel.onImageSelected(uri!!)
@@ -71,6 +80,7 @@ class ChatActivity : AppCompatActivity() {
         getUserMessageInfo()
 
         binding.progressBar.visibility = ProgressBar.INVISIBLE
+        binding.textTitle.text = chat.title
 
         initRecycler()
 
@@ -84,8 +94,8 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun initRecycler() {
-        val chatId = intent.getStringExtra("chatId").toString()
-        val messagesRef = db.reference.child(CHATS_CHILD).child(chatId)
+        val chat = intent.getParcelableExtra<Chat>("current_chat")
+        val messagesRef = db.reference.child(CHATS_CHILD).child(chat!!.id)
         val options = FirebaseRecyclerOptions.Builder<MessageResponse>()
             .setQuery(messagesRef, MessageResponse::class.java)
             .build()
@@ -114,6 +124,9 @@ class ChatActivity : AppCompatActivity() {
             openDocument.launch(arrayOf("image/*"))
         }
 
+        binding.btnGoBack.setOnClickListener {
+            finish()
+        }
     }
     private fun getUserMessageInfo() {
         val uid = auth.currentUser?.uid

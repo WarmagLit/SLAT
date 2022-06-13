@@ -73,6 +73,16 @@ object RequestBuilder {
         return oauth
     }
 
+    fun getFoodByBarcode(barcode: String): OAuthQuery{
+        val oauth = OAuthQuery()
+        buildAuthParams(oauth)
+
+        oauth.method=  "food.find_id_for_barcode"
+        oauth.oauth_signature = sign(paramsBarcodeToArray(oauth, barcode))
+
+        return oauth
+    }
+
     fun paramsIdToArray(oauth: OAuthQuery, food_id: String): Array<String> {
         var res = emptyArray<String>()
         res += "oauth_consumer_key=" + oauth.oauth_consumer_key
@@ -102,6 +112,20 @@ object RequestBuilder {
 
         res+= "region=RU"
         res+= "language=ru"
+        return res
+    }
+
+    fun paramsBarcodeToArray(oauth: OAuthQuery, barcode: String): Array<String> {
+        var res = emptyArray<String>()
+        res += "oauth_consumer_key=" + oauth.oauth_consumer_key
+        res += "oauth_signature_method=" + oauth.oauth_signature_method
+        res += "oauth_timestamp=" +oauth.oauth_timestamp
+        res += "oauth_nonce=" +oauth.oauth_nonce
+        res += "oauth_version=" + oauth.version
+        res += "format=" +oauth.format
+
+        res += "method=" + oauth.method
+        res += "barcode=" + barcode
         return res
     }
 

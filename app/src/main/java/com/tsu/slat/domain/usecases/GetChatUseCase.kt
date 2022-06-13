@@ -76,7 +76,7 @@ class GetChatUseCase {
                 })
     }
 
-    fun putImageInStorage(storageReference: StorageReference, uri: Uri, key: String?, chatId: String) {
+    private fun putImageInStorage(storageReference: StorageReference, uri: Uri, key: String?, chatId: String) {
 
         // First upload the image to Cloud Storage
         val uploadTask = storageReference.putFile(uri)

@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/button_selector.xml" value="0.3535" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/edit_text_shadow.xml" value="0.159" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/ic_arrow.xml" value="0.1855" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/ic_facebook_icon.xml" value="0.1995" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/ic_goolge_icon.xml" value="0.1995" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/rounded_message_gray.xml" value="0.159" />
@@ -22,6 +23,7 @@
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_profile.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/image_message.xml" value="0.34791666666666665" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/message.xml" value="0.1" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/menu/back_toolbar_menu.xml" value="0.5213541666666667" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/TSU/Mobile/Slat2/app/src/main/res/layout/activity_main.xml" value="0.5005208333333333" />

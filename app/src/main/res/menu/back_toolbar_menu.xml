@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/action_remove"
-        android:icon="@drawable/ic_baseline_keyboard_backspace_24"
+        android:icon="@drawable/ic_arrow"
         yourapp:showAsAction="always"
-        android:title="TODO" />
+        android:title="Go back" />
 
 </menu>

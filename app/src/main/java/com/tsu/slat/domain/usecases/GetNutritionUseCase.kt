@@ -26,4 +26,13 @@ class GetNutritionUseCase(private val repository: NutritionRepository) {
             Log.d("Err", "Ошибка")
         }
     }
+
+    suspend fun findBarcode(barcode: String, params: OAuthQuery)  {
+        val res = repository.findBarcode(barcode, params)
+        if (res.isSuccessful && res.body() != null) {
+            //foods = res.body()!!
+        } else {
+            Log.d("Err", "Ошибка")
+        }
+    }
 }

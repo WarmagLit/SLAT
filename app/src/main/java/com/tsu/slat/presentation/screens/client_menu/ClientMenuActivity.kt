@@ -30,7 +30,7 @@ class ClientMenuActivity : AppCompatActivity() {
                 R.id.navigation_news, R.id.navigation_nutrition, R.id.navigation_chats, R.id.navigation_profile
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }

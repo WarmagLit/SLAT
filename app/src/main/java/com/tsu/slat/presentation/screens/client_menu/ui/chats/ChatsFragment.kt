@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import com.tsu.itindr.MainScreen.ui.chats.Chat
+import com.tsu.slat.data.entity.Chat
 import com.tsu.slat.data.entity.ChatResponse
 import com.tsu.slat.databinding.FragmentChatsBinding
 
@@ -48,34 +48,36 @@ class ChatsFragment : Fragment(), ChatAdapter.OnItemClickListener {
         _binding = FragmentChatsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = ChatAdapter(requireContext(), this)
-        binding.recyclerView.adapter = adapter
+        initAdapter()
 
         // Initialize Firebase Auth and check if the user is signed in
         auth = Firebase.auth
-        val user = auth.currentUser
 
         db = Firebase.database
+
+        loadChats()
+
+        return root
+    }
+
+    private fun initAdapter() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        adapter = ChatAdapter(requireContext(), this)
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun loadChats() {
+        val user = auth.currentUser
         val chatsIdRef = db.reference.child(USERS_CHILD).child(user!!.uid).child("chats_id")
         Log.d("tag", chatsIdRef.toString())
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
-                Log.d("tag", dataSnapshot.toString())
                 for (postSnapshot in dataSnapshot.children) {
-                    Log.d("tag", postSnapshot.toString())
                     val chat = postSnapshot.getValue<ChatResponse>()
                     val responce = chat ?: ChatResponse(Chat("null", "null", "null"),  null)
                     adapter.addChat(responce)
-                    Log.d("tag", "next")
                 }
-
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -84,8 +86,6 @@ class ChatsFragment : Fragment(), ChatAdapter.OnItemClickListener {
             }
         }
         chatsIdRef.addValueEventListener(postListener)
-
-        return root
     }
 
     override fun onDestroyView() {
