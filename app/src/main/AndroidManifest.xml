@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Slat.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.screens.calendar.CalendarActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.screens.sign_up.SignUpActivity"
             android:exported="true"
             android:label="@string/title_activity_sign_up"
-            android:theme="@style/Theme.Slat.NoActionBar" >
+            android:theme="@style/Theme.Slat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,8 +41,7 @@
             android:exported="true" />
         <activity
             android:name=".presentation.screens.main.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
