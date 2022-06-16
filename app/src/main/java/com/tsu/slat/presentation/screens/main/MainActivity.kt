@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tsu.slat.databinding.ActivityMainBinding
-import com.tsu.slat.presentation.screens.chat.ChatActivity
 import com.tsu.slat.presentation.screens.client_menu.ClientMenuActivity
-import com.tsu.slat.presentation.screens.foodsearch.FoodSearchActivity
-import com.tsu.slat.presentation.screens.sign_in.SignInActivity
 
 class MainActivity : AppCompatActivity() {
 

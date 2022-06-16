@@ -31,7 +31,7 @@
             android:exported="false"
             android:label="@string/title_activity_client_menu" />
         <activity
-            android:name=".presentation.screens.foodsearch.FoodSearchActivity"
+            android:name=".presentation.screens.nutrition.NutritionActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.screens.sign_in.SignInActivity"

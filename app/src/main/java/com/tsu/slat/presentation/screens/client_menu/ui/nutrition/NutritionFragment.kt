@@ -9,15 +9,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.tsu.slat.databinding.FragmentNutritionBinding
-import com.tsu.slat.presentation.screens.foodsearch.FoodSearchActivity
+import com.tsu.slat.presentation.screens.client_menu.ui.nutrition.day_meal.DayMealAdapter
+import com.tsu.slat.presentation.screens.nutrition.NutritionActivity
 
 class NutritionFragment : Fragment() {
 
     private var _binding: FragmentNutritionBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var adapter: DayMealAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,17 +31,11 @@ class NutritionFragment : Fragment() {
         _binding = FragmentNutritionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        adapter = DayMealAdapter(childFragmentManager);
+        binding.viewPager.adapter = adapter
 
-        binding.btnFoodSearch.setOnClickListener {
-            val intent = Intent(requireContext(), FoodSearchActivity::class.java)
-            startActivity(intent)
-        }
 
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

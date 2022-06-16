@@ -1,22 +1,18 @@
 package com.tsu.slat.presentation.screens.calendar
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.FrameLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.auth.util.ui.PreambleHandler.setup
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
@@ -25,20 +21,20 @@ import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.tsu.slat.R
 import com.tsu.slat.databinding.ActivityCalendarBinding
-import com.tsu.slat.databinding.ActivityChatBinding
 import com.tsu.slat.databinding.CalendarDayLayoutBinding
 import com.tsu.slat.databinding.CalendarHeaderLayoutBinding
+import com.tsu.slat.databinding.FragmentNutritionBinding
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
-import java.time.temporal.WeekFields
 import java.util.*
+
 
 class CalendarActivity : AppCompatActivity() {
 
     private val eventsAdapter = CalendarEventsAdapter {
         AlertDialog.Builder(this)
-            .setMessage("R.string.example_3_dialog_delete_confirmation")
+            .setMessage("Delete this event?")
             .setPositiveButton("Delete") { _, _ ->
                 deleteEvent(it)
             }
@@ -47,22 +43,26 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     private val inputDialog by lazy {
+        val picker = TimePicker(this)
+        //picker.
+        val dialogLayout = layoutInflater.inflate(R.layout.event_dialog_layout, null)
         val editText = AppCompatEditText(this)
         val layout = FrameLayout(this).apply {
             // Setting the padding on the EditText only pads the input area
             // not the entire EditText so we wrap it in a FrameLayout.
             val padding = dpToPx(20, context)
             setPadding(padding, padding, padding, padding)
-            addView(editText, FrameLayout.LayoutParams(
+            addView(dialogLayout, FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             ))
         }
+
         AlertDialog.Builder(this)
-            .setTitle("getString(R.string.example_3_input_dialog_title)")
+            .setTitle("Enter event title")
             .setView(layout)
             .setPositiveButton("Save") { _, _ ->
-                saveEvent(editText.text.toString())
+                saveEvent(editText.toString())
                 // Prepare EditText for reuse.
                 editText.setText("")
             }
@@ -86,8 +86,6 @@ class CalendarActivity : AppCompatActivity() {
     private var selectedDate: LocalDate? = null
     private val today = LocalDate.now()
 
-    private val titleSameYearFormatter = DateTimeFormatter.ofPattern("MMMM")
-    private val titleFormatter = DateTimeFormatter.ofPattern("MMM yyyy")
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
     private val events = mutableMapOf<LocalDate, List<CalendarEvent>>()
 
@@ -214,7 +212,7 @@ class CalendarActivity : AppCompatActivity() {
 
     private fun saveEvent(text: String) {
         if (text.isBlank()) {
-            Toast.makeText(this, "R.string.example_3_empty_input_text", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Text is empty", Toast.LENGTH_LONG).show()
         } else {
             selectedDate?.let {
                 events[it] = events[it].orEmpty().plus(CalendarEvent(UUID.randomUUID().toString(), text, it))
