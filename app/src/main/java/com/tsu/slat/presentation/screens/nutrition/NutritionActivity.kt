@@ -2,14 +2,9 @@ package com.tsu.slat.presentation.screens.nutrition
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.tsu.slat.data.api.Network
 import com.tsu.slat.databinding.ActivityNutritionBinding
 import com.tsu.slat.domain.usecases.GetNutritionUseCase
-import com.tsu.slat.utils.api_utils.RequestBuilder
-import com.tsu.slat.utils.RequestTestBuilder
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class NutritionActivity : AppCompatActivity() {
 

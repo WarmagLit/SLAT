@@ -4,7 +4,7 @@ import android.util.Log
 import com.fatsecret.platform.model.CompactFood
 import com.tsu.slat.data.api.NutritionApi
 import com.tsu.slat.data.entity.BarcodeResponse
-import com.tsu.slat.presentation.screens.nutrition.OAuthQuery
+import com.tsu.slat.presentation.entity.OAuthQuery
 import retrofit2.Response
 
 interface NutritionRemoteDataSource {
