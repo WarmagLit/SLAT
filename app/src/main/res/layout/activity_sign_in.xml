@@ -13,7 +13,7 @@
         android:layout_width="299dp"
         android:layout_height="44dp"
         android:layout_marginTop="44dp"
-        android:text="Welcome"
+        android:text="@string/welcome_to_slat"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#3F414E"
@@ -23,27 +23,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnFacebook"
-        style="@style/custom_large_btn"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/facebook"
-        android:text="@string/continue_with_facebook"
-        android:drawableLeft="@drawable/ic_facebook_icon"
-        android:paddingLeft="35dp"
-        app:cornerRadius="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGoogle"
         style="@style/custom_large_btn"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="22dp"
         android:drawableLeft="@drawable/ic_goolge_icon"
         android:backgroundTint="@color/white"
-        android:paddingLeft="30dp"
+        android:paddingStart="30dp"
         android:text="@string/continue_with_google"
         android:textAlignment="center"
         android:textColor="#3F414E"
@@ -51,7 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/textView3"

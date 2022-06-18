@@ -40,4 +40,6 @@
     <string name="already_have_an_account">ALREADY HAVE AN ACCOUNT?</string>
     <string name="don_t_have_an_account">DON\'T HAVE AN ACCOUNT?</string>
     <string name="get_started">Get Started</string>
+    <string name="email">Email</string>
+    <string name="welcome_to_slat">Welcome to SLAT</string>
 </resources>
