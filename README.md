@@ -61,17 +61,18 @@
 ## Сценарии вариантов использования
 Сценарии использования, варианты использования или прецеденты (Use cases) — спецификация последовательностей действий (варианты последовательностей и ошибочные последовательности) в UML, которые может осуществлять система, подсистема или класс, взаимодействуя с внешними действующими лицами (англ. Actors).
 ### Основные сценарии:
+
+[Ссылка на основные сценарии.](https://science.pm.kreosoft.ru/projects/smirnova-svetlana-genze-artem-gorin-aleksei-2022/wiki/%D0%A1%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8_%D0%92%D0%98)
+
+----
+## Модель предметной области
+
+В контексте Rational Unified Process модель предметной области - это основной артефакт, создаваемый в рамках технологического процесса бизнес-моделирования и наиболее важный артефакт, создаваемый на этапе объектно-ориентированного анализа.
+
+### Модель предметной области может отображать следующее:
++  Объекты предметной области или концептуальные классы;
++  Ассоциации между концептуальными классами;
++  Атрибуты концептуальных классов.
+
 ---
-![](https://sun9-22.userapi.com/impg/GORkZWTGuhbcScY6gH7uwDPcJzsiAXwTcwBJ_A/Zm5hIf7VBRI.jpg?size=570x281&quality=96&sign=66fa8e78d04cc68dcb56d8ae88bb4110&type=album)
-
-----
-![](https://sun9-48.userapi.com/impg/rXLgZB0gRwvcRSuTOQ3bFAaVmmGGCNFIEGiNQA/NlxQVjJdrWY.jpg?size=560x262&quality=96&sign=7a004919791eb49cefb0028520e0485b&type=album)
-
-----
-![](https://sun9-5.userapi.com/impg/F5R6dq31SxaVeMPAMqg3HP9EKCk6gsrTVHF8XQ/oOlwJVvZseE.jpg?size=565x234&quality=96&sign=29b29bf1590ac0a2de9ce2f80bc7780b&type=album)
-
-----
-![](https://sun9-68.userapi.com/impg/ODiHXiNSvtguEYIteOqfEwW-EULGCUGXXsZkLg/hk16dEfy6QQ.jpg?size=573x222&quality=96&sign=fd19d81a5ae1178b5855a1d34c74ed20&type=album)
-
-----
-![](https://sun9-21.userapi.com/impg/ltO8pGG0kERxwg0nn9s7Dy3lJggnw47Ka0kOiQ/iK12GpaEx3w.jpg?size=567x230&quality=96&sign=cee98a6b300d56f66ded0e13545d0902&type=album)
+![](https://sun9-86.userapi.com/impg/BOzMe6_ZfqJuoUJg3ZVBzoFfRjpiS15G5mcD9g/zIvUmpZfpQ0.jpg?size=807x945&quality=96&sign=f505132123ac87c8ff2acc17827b80da&type=album)
