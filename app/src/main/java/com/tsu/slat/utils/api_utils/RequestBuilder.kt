@@ -2,7 +2,7 @@ package com.tsu.slat.utils.api_utils
 
 import android.util.Base64
 import android.util.Log
-import com.tsu.slat.presentation.screens.nutrition.OAuthQuery
+import com.tsu.slat.presentation.entity.OAuthQuery
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 import java.security.InvalidKeyException
@@ -73,7 +73,7 @@ object RequestBuilder {
         return oauth
     }
 
-    fun getFoodByBarcode(barcode: String): OAuthQuery{
+    fun getFoodByBarcode(barcode: String): OAuthQuery {
         val oauth = OAuthQuery()
         buildAuthParams(oauth)
 
@@ -83,7 +83,7 @@ object RequestBuilder {
         return oauth
     }
 
-    fun paramsIdToArray(oauth: OAuthQuery, food_id: String): Array<String> {
+    private fun paramsIdToArray(oauth: OAuthQuery, food_id: String): Array<String> {
         var res = emptyArray<String>()
         res += "oauth_consumer_key=" + oauth.oauth_consumer_key
         res += "oauth_signature_method=" + oauth.oauth_signature_method
@@ -98,7 +98,7 @@ object RequestBuilder {
         return res
     }
 
-    fun paramsSearchToArray(oauth: OAuthQuery, food: String): Array<String> {
+    private fun paramsSearchToArray(oauth: OAuthQuery, food: String): Array<String> {
         var res = emptyArray<String>()
         res += "oauth_consumer_key=" + oauth.oauth_consumer_key
         res += "oauth_signature_method=" + oauth.oauth_signature_method
@@ -115,7 +115,7 @@ object RequestBuilder {
         return res
     }
 
-    fun paramsBarcodeToArray(oauth: OAuthQuery, barcode: String): Array<String> {
+    private fun paramsBarcodeToArray(oauth: OAuthQuery, barcode: String): Array<String> {
         var res = emptyArray<String>()
         res += "oauth_consumer_key=" + oauth.oauth_consumer_key
         res += "oauth_signature_method=" + oauth.oauth_signature_method
@@ -145,7 +145,7 @@ object RequestBuilder {
     }
 
 
-    fun paramsToString(params: Array<String>) : String {
+    private fun paramsToString(params: Array<String>) : String {
         val p = params
         Arrays.sort(p)
         return p.joinToString(separator = "&")
@@ -158,7 +158,7 @@ object RequestBuilder {
      * @param params array of params that is used for the sign
      * @return a string with the unique signature
      */
-    fun sign(params: Array<String>) : String {
+    private fun sign(params: Array<String>) : String {
         val encodedURI: String = encode(APP_URL)
         Log.d("BeforeEncode", paramsToString(params))
         val encodedParams = encode(paramsToString(params))
@@ -172,7 +172,7 @@ object RequestBuilder {
         try {
             val m: Mac = Mac.getInstance(APP_SIGNATURE_METHOD)
             m.init(secretKey)
-            //sign = encode(String(Base64.encode(m.doFinal(text.toByteArray()), Base64.DEFAULT)).trim())
+
             sign = String(Base64.encode(m.doFinal(text.toByteArray()), Base64.DEFAULT)).trim()
         } catch (e: NoSuchAlgorithmException) {
             println("NoSuchAlgorithmException: " + e.message)
@@ -188,7 +188,7 @@ object RequestBuilder {
      *
      * @return the randomly generated value for nonce.
      */
-    fun nonce(): String {
+    private fun nonce(): String {
         val r = Random()
         return (r.nextDouble() * 100000).toInt().toString()
 

@@ -1,4 +1,4 @@
-package com.tsu.slat.presentation.screens.nutrition
+package com.tsu.slat.presentation.entity
 
 data class OAuthQuery(
     var method: String? = null,
