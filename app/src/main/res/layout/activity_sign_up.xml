@@ -6,16 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.screens.sign_up.SignUpActivity">
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textHeader"
             style="@style/text_header"
             android:layout_marginTop="44dp"
             android:text="@string/create_your_account"
@@ -37,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textHeader" />
 
         <TextView
             android:id="@+id/textView3"
@@ -58,7 +56,7 @@
             android:layout_width="340dp"
             android:layout_height="63dp"
             android:layout_marginTop="20dp"
-            android:hint="email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textColorHint="#A1A4B2"
             android:textSize="17sp"
@@ -142,7 +140,8 @@
             app:layout_constraintHorizontal_bias="0.411"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="@+id/textView5"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
