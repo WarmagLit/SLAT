@@ -58,3 +58,20 @@
 
 ![](https://sun4.userapi.com/sun4-10/s/v1/ig2/v7PTEZQBdCNaWZxsiIm1-9Q5OgNGWdnx17puFsXZ29O0IgPfK8RE1trGj4kVJPf1abKr7JkZOoQokLj88K110_jO.jpg?size=727x799&quality=96&type=album)
 
+## Сценарии вариантов использования
+Сценарии использования, варианты использования или прецеденты (Use cases) — спецификация последовательностей действий (варианты последовательностей и ошибочные последовательности) в UML, которые может осуществлять система, подсистема или класс, взаимодействуя с внешними действующими лицами (англ. Actors).
+### Основные сценарии:
+---
+![](https://sun9-22.userapi.com/impg/GORkZWTGuhbcScY6gH7uwDPcJzsiAXwTcwBJ_A/Zm5hIf7VBRI.jpg?size=570x281&quality=96&sign=66fa8e78d04cc68dcb56d8ae88bb4110&type=album)
+
+----
+![](https://sun9-48.userapi.com/impg/rXLgZB0gRwvcRSuTOQ3bFAaVmmGGCNFIEGiNQA/NlxQVjJdrWY.jpg?size=560x262&quality=96&sign=7a004919791eb49cefb0028520e0485b&type=album)
+
+----
+![](https://sun9-5.userapi.com/impg/F5R6dq31SxaVeMPAMqg3HP9EKCk6gsrTVHF8XQ/oOlwJVvZseE.jpg?size=565x234&quality=96&sign=29b29bf1590ac0a2de9ce2f80bc7780b&type=album)
+
+----
+![](https://sun9-68.userapi.com/impg/ODiHXiNSvtguEYIteOqfEwW-EULGCUGXXsZkLg/hk16dEfy6QQ.jpg?size=573x222&quality=96&sign=fd19d81a5ae1178b5855a1d34c74ed20&type=album)
+
+----
+![](https://sun9-21.userapi.com/impg/ltO8pGG0kERxwg0nn9s7Dy3lJggnw47Ka0kOiQ/iK12GpaEx3w.jpg?size=567x230&quality=96&sign=cee98a6b300d56f66ded0e13545d0902&type=album)
