@@ -1,33 +1,35 @@
-package com.tsu.slat.presentation.screens.foodsearch
+package com.tsu.slat.presentation.screens.nutrition
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.tsu.slat.data.api.Network
-import com.tsu.slat.databinding.ActivityFoodSearchBinding
+import com.tsu.slat.databinding.ActivityNutritionBinding
 import com.tsu.slat.domain.usecases.GetNutritionUseCase
 import com.tsu.slat.utils.api_utils.RequestBuilder
 import com.tsu.slat.utils.RequestTestBuilder
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class FoodSearchActivity : AppCompatActivity() {
+class NutritionActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityFoodSearchBinding
+    private lateinit var binding: ActivityNutritionBinding
 
-    private lateinit var viewModel: FoodSearchViewModel
+    private lateinit var viewModel: NutritionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFoodSearchBinding.inflate(layoutInflater)
+        binding = ActivityNutritionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = FoodSearchViewModel()
+        viewModel = NutritionViewModel()
 
         Network.createRepository(this)
 
         val useCase = GetNutritionUseCase(Network.nutritionRepository)
 
+
+        /*
         binding.btnGetFoodById.setOnClickListener {
             runBlocking {
                 launch {
@@ -46,7 +48,7 @@ class FoodSearchActivity : AppCompatActivity() {
                     useCase.findBarcode("802726425705", params)
                 }
             }
-        }
+        }*/
 
         //useCase.foods
 

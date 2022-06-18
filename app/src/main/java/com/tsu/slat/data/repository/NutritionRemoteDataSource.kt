@@ -2,14 +2,10 @@ package com.tsu.slat.data.repository
 
 import android.util.Log
 import com.fatsecret.platform.model.CompactFood
-import com.fatsecret.platform.services.FatsecretService
 import com.tsu.slat.data.api.NutritionApi
 import com.tsu.slat.data.entity.BarcodeResponse
-import com.tsu.slat.presentation.screens.foodsearch.OAuthQuery
+import com.tsu.slat.presentation.screens.nutrition.OAuthQuery
 import retrofit2.Response
-import java.util.*
-import javax.crypto.Mac
-import javax.crypto.spec.SecretKeySpec
 
 interface NutritionRemoteDataSource {
     suspend fun getFoodById(food_id: String, params: OAuthQuery):  Response<CompactFood>

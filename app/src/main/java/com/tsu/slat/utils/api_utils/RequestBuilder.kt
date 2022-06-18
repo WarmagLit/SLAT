@@ -2,7 +2,7 @@ package com.tsu.slat.utils.api_utils
 
 import android.util.Base64
 import android.util.Log
-import com.tsu.slat.presentation.screens.foodsearch.OAuthQuery
+import com.tsu.slat.presentation.screens.nutrition.OAuthQuery
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 import java.security.InvalidKeyException

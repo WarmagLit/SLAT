@@ -3,7 +3,7 @@ package com.tsu.slat.domain.usecases
 import android.util.Log
 import com.fatsecret.platform.model.CompactFood
 import com.tsu.slat.data.repository.NutritionRepository
-import com.tsu.slat.presentation.screens.foodsearch.OAuthQuery
+import com.tsu.slat.presentation.screens.nutrition.OAuthQuery
 
 class GetNutritionUseCase(private val repository: NutritionRepository) {
 

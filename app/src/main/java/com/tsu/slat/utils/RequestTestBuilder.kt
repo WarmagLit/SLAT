@@ -1,6 +1,5 @@
 package com.tsu.slat.utils
 import android.util.Base64
-import com.tsu.slat.presentation.screens.foodsearch.OAuthQuery
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 import java.security.InvalidKeyException
