@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.tsu.slat.databinding.FragmentNewsBinding
+import com.tsu.slat.presentation.screens.client_menu.ClientMenuActivity
 
 class NewsFragment : Fragment() {
 
@@ -32,6 +33,7 @@ class NewsFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 

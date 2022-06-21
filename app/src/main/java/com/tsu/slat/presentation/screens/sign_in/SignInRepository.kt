@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.tsu.slat.data.entity.Role
 import com.tsu.slat.data.entity.User
 
 class SignInRepository {
@@ -58,5 +59,9 @@ class SignInRepository {
 
     fun setValueToUser(userId: String, user: User) {
         myRef.child(userId).setValue(user)
+    }
+
+    fun setUserRole(userId: String, role: Role) {
+        myRef.child(userId).child("role").setValue(role)
     }
 }

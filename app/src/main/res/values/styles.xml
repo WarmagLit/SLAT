@@ -16,6 +16,23 @@
         <item name="android:layout_height">80dp</item>
         <item name="android:textColor">#F6F1FB</item>
         <item name="android:textAllCaps">false</item>
+    </style>
 
+    <style name="text_classic">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text_bold">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text_light">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>

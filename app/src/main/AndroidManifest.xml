@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Slat.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.screens.client_menu.ui.choose_role.ChooseRoleActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.screens.calendar.CalendarActivity"
             android:exported="false" />
         <activity
@@ -31,7 +34,7 @@
             android:exported="false"
             android:label="@string/title_activity_client_menu" />
         <activity
-            android:name=".presentation.screens.nutrition.NutritionActivity"
+            android:name=".presentation.screens.find_food.FindFoodActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.screens.sign_in.SignInActivity"
@@ -41,7 +44,10 @@
             android:exported="true" />
         <activity
             android:name=".presentation.screens.main.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
+        <activity
+            android:name=".presentation.screens.nutrition_info.NutritionInfoActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

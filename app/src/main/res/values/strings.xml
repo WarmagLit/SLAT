@@ -46,4 +46,19 @@
     <string name="body_parameters">Body parameters</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="trainer">Trainer</string>
+    <string name="_0">0</string>
+    <string name="minus">-</string>
+    <string name="equals">=</string>
+    <string name="calories_left">Осталось калорий:</string>
+    <string name="breakfast">Завтрак</string>
+    <string name="lunch">Обед</string>
+    <string name="dinner">Ужин</string>
+    <string name="snack">Перекус</string>
+    <string name="add_food">Добавить еду</string>
+    <string name="brand">Бренд</string>
+    <string name="food_name">Название еды</string>
+    <string name="calories">Калоринойсть</string>
+    <string name="add_meal">Add Meal</string>
+    <string name="client">Client</string>
+    <string name="choose_your_role">Выберите свою роль:</string>
 </resources>

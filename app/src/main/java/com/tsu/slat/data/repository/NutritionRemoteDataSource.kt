@@ -1,21 +1,23 @@
 package com.tsu.slat.data.repository
 
 import android.util.Log
-import com.fatsecret.platform.model.CompactFood
 import com.tsu.slat.data.api.NutritionApi
 import com.tsu.slat.data.entity.BarcodeResponse
+import com.tsu.slat.data.entity.FindFoodResponse
+import com.tsu.slat.data.entity.MealInfo
+import com.tsu.slat.data.entity.SearchResponse
 import com.tsu.slat.presentation.entity.OAuthQuery
 import retrofit2.Response
 
 interface NutritionRemoteDataSource {
-    suspend fun getFoodById(food_id: String, params: OAuthQuery):  Response<CompactFood>
-    suspend fun findFood(food: String, params: OAuthQuery): Response<CompactFood>
+    suspend fun getFoodById(food_id: String, params: OAuthQuery):  Response<MealInfo>
+    suspend fun findFood(food: String, params: OAuthQuery): Response<SearchResponse>
     suspend fun findBarcode(barcode: String, params: OAuthQuery): Response<BarcodeResponse>
 }
 
 class NutritionRemoteDataSourceImpl(private val nutritionApi: NutritionApi) : NutritionRemoteDataSource {
 
-    override suspend fun getFoodById(food_id: String, params: OAuthQuery): Response<CompactFood> {
+    override suspend fun getFoodById(food_id: String, params: OAuthQuery): Response<MealInfo> {
         params.oauth_signature = params.oauth_signature!!.replace("%3D", "=")
         Log.d("Tag", "Signature: " +  params.oauth_signature!!)
         return nutritionApi.getNutrition(
@@ -32,7 +34,7 @@ class NutritionRemoteDataSourceImpl(private val nutritionApi: NutritionApi) : Nu
         //nutritionApi.getNutrition(method, consumer_key, nonce, signature, signature_method, timestamp, oauth_version)
     }
 
-    override suspend fun findFood(food: String, params: OAuthQuery): Response<CompactFood> {
+    override suspend fun findFood(food: String, params: OAuthQuery): Response<SearchResponse> {
         params.oauth_signature = params.oauth_signature!!.replace("%3D", "=")
         Log.d("Tag", "Signature: " +  params.oauth_signature!!)
         return nutritionApi.searchFood(

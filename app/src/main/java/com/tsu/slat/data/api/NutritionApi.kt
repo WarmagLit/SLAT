@@ -1,7 +1,9 @@
 package com.tsu.slat.data.api
 
-import com.fatsecret.platform.model.CompactFood
 import com.tsu.slat.data.entity.BarcodeResponse
+import com.tsu.slat.data.entity.FindFoodResponse
+import com.tsu.slat.data.entity.MealInfo
+import com.tsu.slat.data.entity.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,7 +18,7 @@ interface NutritionApi {
                              @Query(value = "oauth_signature") oauth_signature: String,
                              @Query(value = "oauth_signature_method") oauth_signature_method: String,
                              @Query(value = "oauth_timestamp") oauth_timestamp: String,
-                             @Query(value = "oauth_version") version: String): Response<CompactFood>
+                             @Query(value = "oauth_version") version: String): Response<MealInfo>
 
     @GET("server.api")
     suspend fun searchFood(@Query(value = "search_expression") food: String,
@@ -29,7 +31,7 @@ interface NutritionApi {
                              @Query(value = "oauth_timestamp") oauth_timestamp: String,
                              @Query(value = "oauth_version") version: String,
                              @Query(value = "region") region: String,
-                             @Query(value = "language") lang: String): Response<CompactFood>
+                             @Query(value = "language") lang: String): Response<SearchResponse>
 
     @GET("server.api")
     suspend fun findBarcode(@Query(value = "barcode") barcode: String,

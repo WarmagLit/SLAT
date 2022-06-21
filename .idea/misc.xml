@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable-v24/edt_input_background.xml" value="0.499" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/button_selector.xml" value="0.3535" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/calendar_day_selected_bg.xml" value="0.1945" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/calendar_today_bg.xml" value="0.2" />
@@ -14,25 +15,32 @@
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/drawable/rounded_message_gray.xml" value="0.159" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_calendar.xml" value="0.1" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_chat.xml" value="0.4466666666666667" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_choose_role.xml" value="0.290625" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_client_menu.xml" value="0.5005208333333333" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_find_food.xml" value="0.3203125" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_food_search.xml" value="0.22135416666666666" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_main.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_nutrition.xml" value="0.5213541666666667" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_nutrition_info.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_sign_in.xml" value="0.3333333333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/activity_sign_up.xml" value="0.4466666666666667" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/calendar_day_layout.xml" value="0.1" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/calendar_day_legend.xml" value="0.4466666666666667" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/calendar_event_item_layout.xml" value="0.1" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/calendar_header_layout.xml" value="0.3333333333333333" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/calories_goal_item.xml" value="0.49947916666666664" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/chat_item.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/event_dialog_layout.xml" value="0.3692708333333333" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/food_add_item.xml" value="0.49947916666666664" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/food_info_layout.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_chats.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_dashboard.xml" value="0.5005208333333333" />
-        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_day_meal.xml" value="0.5213541666666667" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_day_meal.xml" value="0.336" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_notifications.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_nutrition.xml" value="0.25252270433905144" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/fragment_profile.xml" value="0.5005208333333333" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/image_message.xml" value="0.34791666666666665" />
+        <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/item_food_short_info.xml" value="0.49947916666666664" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/layout/message.xml" value="0.1" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/menu/back_toolbar_menu.xml" value="0.5213541666666667" />
         <entry key="..\:/TSU/Mobile/SLAT/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5005208333333333" />
