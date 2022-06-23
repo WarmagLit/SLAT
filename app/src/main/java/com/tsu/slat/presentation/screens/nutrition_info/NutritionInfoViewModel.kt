@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tsu.slat.data.entity.Food
-import com.tsu.slat.data.entity.FoodItemShort
-import com.tsu.slat.data.entity.MealInfo
-import com.tsu.slat.data.entity.Mealtime
+import com.tsu.slat.data.entity.*
 import com.tsu.slat.data.repository.DayMealRepository
 import com.tsu.slat.domain.usecases.FindFoodInfoUseCase
 import kotlinx.coroutines.launch
@@ -17,7 +14,7 @@ class NutritionInfoViewModel(private val useCase: FindFoodInfoUseCase): ViewMode
 
     private val repository = DayMealRepository()
 
-    val mealInfo = MutableLiveData<MealInfo>()
+    val mealInfo = MutableLiveData<MealInfoResponse>()
 
     fun addMeal(date: LocalDate, type: Mealtime, food: Food) {
         repository.addMeal(date, type, food)

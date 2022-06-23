@@ -8,7 +8,9 @@ import androidx.activity.viewModels
 import com.tsu.slat.data.api.Network
 import com.tsu.slat.data.entity.FoodItemShort
 import com.tsu.slat.data.entity.MealInfo
+import com.tsu.slat.data.entity.MealInfoResponse
 import com.tsu.slat.data.entity.Mealtime
+import com.tsu.slat.data.entity.converter.MealConverter
 import com.tsu.slat.databinding.ActivityNutritionInfoBinding
 import com.tsu.slat.domain.usecases.FindFoodInfoUseCase
 import com.tsu.slat.presentation.screens.client_menu.ClientMenuActivity
@@ -19,7 +21,7 @@ class NutritionInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNutritionInfoBinding
 
     private var foodItem: FoodItemShort? = null
-    private var currentMeal: MealInfo? = null
+    private var currentMeal: MealInfoResponse? = null
     private var addMealDate: LocalDate = LocalDate.now()
     private var mealType: Mealtime = Mealtime.BREAKFAST
 
@@ -58,8 +60,10 @@ class NutritionInfoActivity : AppCompatActivity() {
 
     private fun setListeners() {
         binding.btnAddMeal.setOnClickListener {
-            if (currentMeal != null)
-                nutritionInfoViewModel.addMeal(addMealDate, mealType, currentMeal!!.food)
+            if (currentMeal != null) {
+                val meal = MealConverter.responseToMealInfo(currentMeal!!)
+                nutritionInfoViewModel.addMeal(addMealDate, mealType, meal.food)
+            }
             else
                 TODO()
 

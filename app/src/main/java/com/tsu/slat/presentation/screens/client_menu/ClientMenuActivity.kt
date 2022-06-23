@@ -39,6 +39,8 @@ class ClientMenuActivity : AppCompatActivity() {
             "profile" -> loadFragment(R.id.navigation_profile)
         }
 
+        intent.putExtra("fragment", "null")
+
     }
 
     private fun loadFragment(id: Int) {
