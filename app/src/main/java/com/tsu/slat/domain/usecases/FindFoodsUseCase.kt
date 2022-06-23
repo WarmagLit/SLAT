@@ -1,9 +1,8 @@
 package com.tsu.slat.domain.usecases
 
 import android.util.Log
-import com.tsu.slat.data.entity.SearchResponse
+import com.tsu.slat.data.entity.response.SearchResponse
 import com.tsu.slat.data.repository.NutritionRepository
-import com.tsu.slat.presentation.entity.OAuthQuery
 import com.tsu.slat.utils.api_utils.RequestBuilder
 
 class FindFoodsUseCase(private val repository: NutritionRepository) {

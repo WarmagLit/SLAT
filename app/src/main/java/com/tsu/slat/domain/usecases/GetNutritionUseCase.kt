@@ -1,11 +1,8 @@
 package com.tsu.slat.domain.usecases
 
 import android.util.Log
-import com.fatsecret.platform.model.CompactFood
-import com.tsu.slat.data.entity.FindFoodResponse
-import com.tsu.slat.data.entity.MealInfo
-import com.tsu.slat.data.entity.MealInfoResponse
-import com.tsu.slat.data.entity.SearchResponse
+import com.tsu.slat.data.entity.response.MealInfoResponse
+import com.tsu.slat.data.entity.response.SearchResponse
 import com.tsu.slat.data.repository.NutritionRepository
 import com.tsu.slat.presentation.entity.OAuthQuery
 

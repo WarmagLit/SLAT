@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tsu.slat.R
-import com.tsu.slat.data.entity.ChatResponse
+import com.tsu.slat.data.entity.response.ChatResponse
 import com.tsu.slat.databinding.ChatItemBinding
 import com.tsu.slat.presentation.screens.chat.ChatActivity
 

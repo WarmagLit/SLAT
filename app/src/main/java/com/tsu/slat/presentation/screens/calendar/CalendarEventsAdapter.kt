@@ -3,6 +3,7 @@ package com.tsu.slat.presentation.screens.calendar
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tsu.slat.databinding.CalendarEventItemLayoutBinding
+import com.tsu.slat.presentation.entity.CalendarEvent
 
 class CalendarEventsAdapter(val onClick: (CalendarEvent) -> Unit) :
     RecyclerView.Adapter<CalendarEventsAdapter.Example3EventsViewHolder>() {

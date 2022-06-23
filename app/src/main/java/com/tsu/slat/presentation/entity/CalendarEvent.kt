@@ -1,4 +1,4 @@
-package com.tsu.slat.presentation.screens.calendar
+package com.tsu.slat.presentation.entity
 
 import java.time.LocalDate
 

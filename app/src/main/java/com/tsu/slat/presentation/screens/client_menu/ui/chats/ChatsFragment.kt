@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -20,7 +19,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.tsu.slat.data.entity.Chat
-import com.tsu.slat.data.entity.ChatResponse
+import com.tsu.slat.data.entity.response.ChatResponse
 import com.tsu.slat.databinding.FragmentChatsBinding
 
 class ChatsFragment : Fragment(), ChatAdapter.OnItemClickListener {

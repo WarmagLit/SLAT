@@ -26,7 +26,7 @@ class DayMealFragment(day: LocalDate) : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val dayMealViewModel by viewModels<DayMealViewModel>()
+    private val viewModel by viewModels<DayMealViewModel>()
 
     private val today = day
 
@@ -39,14 +39,23 @@ class DayMealFragment(day: LocalDate) : Fragment() {
         _binding = FragmentDayMealBinding.inflate(inflater, container, false)
 
         initMealContainers()
+        initObservers()
 
-        dayMealViewModel.dayMeals.observe(viewLifecycleOwner) {
+        viewModel.dayMeals.observe(viewLifecycleOwner) {
             Log.d("Meal", "updated")
             updateDayMeals(inflater, container, it)
         }
 
 
         return binding.root
+    }
+
+    private fun initObservers() {
+        viewModel.dayCalories.observe(viewLifecycleOwner) {
+            binding.include.txtCaloriesGoal.text = "2000"
+            binding.include.txtCaloriesEaten.text = it.toString()
+            binding.include.txtCaloriesLeft.text = (2000 - it).toString()
+        }
     }
 
     private fun initMealContainers() {
@@ -100,6 +109,7 @@ class DayMealFragment(day: LocalDate) : Fragment() {
 
     private fun updateDayMeals(inflater: LayoutInflater, container: ViewGroup?,dayMeals: List<DayMeal>) {
         clearViews()
+        viewModel.dayCalories.value = 0
         for (meal in dayMeals) {
             if (LocalDate.parse(meal.date) == today) {
                 addMeal(inflater, container, meal)
@@ -115,6 +125,8 @@ class DayMealFragment(day: LocalDate) : Fragment() {
     }
 
     private fun addMeal(inflater: LayoutInflater, container: ViewGroup?, dayMeal: DayMeal) {
+        viewModel.dayCalories.value = viewModel.dayCalories.value?.plus(dayMeal.food!!.servings?.serving?.get(0)?.calories!!.toInt())
+
         val food_binding = FoodInfoLayoutBinding.inflate(inflater, container, false)
         val food = food_binding.root
         food_binding.layoutFoodInfo.setOnClickListener {

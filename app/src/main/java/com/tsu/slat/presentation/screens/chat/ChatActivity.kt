@@ -1,7 +1,6 @@
 package com.tsu.slat.presentation.screens.chat
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,12 +20,11 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.tsu.slat.R
 import com.tsu.slat.data.entity.Chat
-import com.tsu.slat.data.entity.MessageResponse
+import com.tsu.slat.data.entity.response.MessageResponse
 import com.tsu.slat.data.entity.UserMessageInfo
 import com.tsu.slat.databinding.ActivityChatBinding
 import com.tsu.slat.domain.usecases.GetChatUseCase
 import com.tsu.slat.presentation.screens.sign_in.SignInActivity
-import java.util.*
 
 class ChatActivity : AppCompatActivity() {
 

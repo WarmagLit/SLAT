@@ -1,10 +1,10 @@
 package com.tsu.slat.presentation.screens.nutrition_info
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tsu.slat.data.entity.*
+import com.tsu.slat.data.entity.response.MealInfoResponse
 import com.tsu.slat.data.repository.DayMealRepository
 import com.tsu.slat.domain.usecases.FindFoodInfoUseCase
 import kotlinx.coroutines.launch

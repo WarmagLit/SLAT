@@ -1,6 +1,8 @@
 package com.tsu.slat.data.api
 
-import com.tsu.slat.data.entity.*
+import com.tsu.slat.data.entity.response.BarcodeResponse
+import com.tsu.slat.data.entity.response.MealInfoResponse
+import com.tsu.slat.data.entity.response.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

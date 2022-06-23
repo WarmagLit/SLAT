@@ -1,4 +1,6 @@
-package com.tsu.slat.data.entity
+package com.tsu.slat.data.entity.response
+
+import com.tsu.slat.data.entity.UserMessageInfo
 
 data class MessageResponse(
     var id: String? = null,

@@ -12,6 +12,7 @@ import com.google.firebase.ktx.Firebase
 import com.tsu.slat.data.entity.DayMeal
 import com.tsu.slat.data.entity.Food
 import com.tsu.slat.data.entity.Mealtime
+import com.tsu.slat.presentation.entity.CalendarEvent
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -22,6 +23,7 @@ class DayMealRepository {
     private val auth: FirebaseAuth = Firebase.auth
     private val database = Firebase.database
     private val myRef: DatabaseReference = database.getReference("users").child(getCurrentUserId()).child("meals")
+
     var mealsByDay: List<DayMeal>? = null
 
     val mealsByDayList: Flow<List<DayMeal>> = flow {

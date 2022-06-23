@@ -2,7 +2,7 @@ package com.tsu.slat.data.entity.converter
 
 import com.tsu.slat.data.entity.Food
 import com.tsu.slat.data.entity.MealInfo
-import com.tsu.slat.data.entity.MealInfoResponse
+import com.tsu.slat.data.entity.response.MealInfoResponse
 import com.tsu.slat.data.entity.ServingList
 
 object MealConverter {

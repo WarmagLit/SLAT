@@ -26,13 +26,24 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <TextView
+            android:id="@+id/txtDay"
+            style="@style/text_classic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/today"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnGoForward"
+            app:layout_constraintStart_toEndOf="@+id/btnGoBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/btnGoForward"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@color/fui_transparent"
             android:gravity="right"
-            app:icon="@drawable/ic_arrow"
+            app:icon="@drawable/ic_arrow_right"
             app:iconTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

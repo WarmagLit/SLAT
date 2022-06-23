@@ -12,10 +12,12 @@
         android:layout_height="150dp"
         android:layout_marginTop="36dp"
         android:src="@drawable/ic_account_circle_black_36dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="150dip"/>
 
     <TextView
         android:id="@+id/textViewName"

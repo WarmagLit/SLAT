@@ -4,11 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.viewModels
 import com.tsu.slat.data.api.Network
 import com.tsu.slat.data.entity.FoodItemShort
-import com.tsu.slat.data.entity.MealInfo
-import com.tsu.slat.data.entity.MealInfoResponse
+import com.tsu.slat.data.entity.response.MealInfoResponse
 import com.tsu.slat.data.entity.Mealtime
 import com.tsu.slat.data.entity.converter.MealConverter
 import com.tsu.slat.databinding.ActivityNutritionInfoBinding

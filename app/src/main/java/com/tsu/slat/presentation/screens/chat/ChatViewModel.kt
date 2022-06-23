@@ -1,15 +1,10 @@
 package com.tsu.slat.presentation.screens.chat
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.storage.StorageReference
-import com.tsu.slat.data.entity.MessageResponse
 import com.tsu.slat.domain.usecases.GetChatUseCase
-import java.util.*
-import java.util.concurrent.Executor
 
 class ChatViewModel(private val getChatUseCase: GetChatUseCase, private val chatId: String) : ViewModel() {
 

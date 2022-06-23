@@ -5,11 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.children
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +24,8 @@ import com.tsu.slat.R
 import com.tsu.slat.databinding.ActivityCalendarBinding
 import com.tsu.slat.databinding.CalendarDayLayoutBinding
 import com.tsu.slat.databinding.CalendarHeaderLayoutBinding
-import com.tsu.slat.databinding.FragmentNutritionBinding
+import com.tsu.slat.presentation.entity.CalendarEvent
+import com.tsu.slat.presentation.screens.client_menu.ui.chats.ChatsViewModel
 import kotlinx.android.synthetic.main.event_dialog_layout.view.*
 import java.time.LocalDate
 import java.time.YearMonth
@@ -88,7 +90,9 @@ class CalendarActivity : AppCompatActivity() {
     private val today = LocalDate.now()
 
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
-    private val events = mutableMapOf<LocalDate, List<CalendarEvent>>()
+    private var events = mutableMapOf<LocalDate, List<CalendarEvent>>()
+
+    private val viewModel by viewModels<CalendarViewModel>()
 
     private lateinit var binding: ActivityCalendarBinding
 
@@ -97,6 +101,7 @@ class CalendarActivity : AppCompatActivity() {
         binding = ActivityCalendarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initObservers()
 
         binding.exThreeRv.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -130,6 +135,7 @@ class CalendarActivity : AppCompatActivity() {
                 }
             }
         }
+
         binding.exThreeCalendar.dayBinder = object : DayBinder<DayViewContainer> {
             override fun create(view: View) = DayViewContainer(view)
             override fun bind(container: DayViewContainer, day: CalendarDay) {
@@ -166,13 +172,6 @@ class CalendarActivity : AppCompatActivity() {
         }
 
         binding.exThreeCalendar.monthScrollListener = {
-            /*
-            homeActivityToolbar.title = if (it.year == today.year) {
-                titleSameYearFormatter.format(it.yearMonth)
-            } else {
-                titleFormatter.format(it.yearMonth)
-            }*/
-
             // Select the first day of the month when
             // we scroll to a new month.
             selectDate(it.yearMonth.atDay(1))
@@ -201,6 +200,16 @@ class CalendarActivity : AppCompatActivity() {
         }
     }
 
+    private fun initObservers() {
+        viewModel.events.observe(this) {
+            events = it.toMutableMap()
+            for (date in it) {
+                updateAdapterForDate(date.key)
+                binding.exThreeCalendar.notifyDateChanged(date.key)
+            }
+        }
+    }
+
     private fun selectDate(date: LocalDate) {
         if (selectedDate != date) {
             val oldDate = selectedDate
@@ -216,13 +225,16 @@ class CalendarActivity : AppCompatActivity() {
             Toast.makeText(this, "Text is empty", Toast.LENGTH_LONG).show()
         } else {
             selectedDate?.let {
-                events[it] = events[it].orEmpty().plus(CalendarEvent(UUID.randomUUID().toString(), text, it))
+                val event = CalendarEvent(UUID.randomUUID().toString(), text, it)
+                viewModel.addEventToDatabase(it, event)
+                events[it] = events[it].orEmpty().plus(event)
                 updateAdapterForDate(it)
             }
         }
     }
 
     private fun deleteEvent(event: CalendarEvent) {
+        viewModel.deleteEvent(event)
         val date = event.date
         events[date] = events[date].orEmpty().minus(event)
         updateAdapterForDate(date)
@@ -237,21 +249,4 @@ class CalendarActivity : AppCompatActivity() {
         binding.exThreeSelectedDateText.text = selectionFormatter.format(date)
     }
 
-    override fun onStart() {
-        super.onStart()
-        /*
-        homeActivityToolbar.setBackgroundColor(requireContext().getColorCompat(R.color.example_3_toolbar_color))
-        requireActivity().window.statusBarColor = requireContext().getColorCompat(R.color.example_3_statusbar_color)
-
-         */
-    }
-
-    override fun onStop() {
-        super.onStop()
-        /*
-        homeActivityToolbar.setBackgroundColor(requireContext().getColorCompat(R.color.colorPrimary))
-        requireActivity().window.statusBarColor = requireContext().getColorCompat(R.color.colorPrimaryDark)
-
-         */
-    }
 }

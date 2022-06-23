@@ -1,17 +1,12 @@
 package com.tsu.slat.data.api
 
 import android.content.Context
-import android.widget.Toast
 import com.google.gson.GsonBuilder
-import com.tsu.slat.data.entity.MealInfoResponse
 import com.tsu.slat.data.repository.NutritionRemoteDataSourceImpl
 import com.tsu.slat.data.repository.NutritionRepository
 import com.tsu.slat.data.repository.NutritionRepositoryImpl
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
