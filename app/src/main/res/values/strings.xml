@@ -61,4 +61,5 @@
     <string name="add_meal">Add Meal</string>
     <string name="client">Client</string>
     <string name="choose_your_role">Выберите свою роль:</string>
+    <string name="i_already_have_an_account">I already have an account</string>
 </resources>

@@ -42,6 +42,14 @@ class FindFoodActivity : AppCompatActivity() {
         initListeners()
         initObservers()
 
+        binding.btnGetFoodById.setOnClickListener {
+            runBlocking {
+                launch {
+                    val params = RequestBuilder.getFoodByBarcode("5449000054227")
+                    useCase.findBarcode("5449000054227", params)
+                }
+            }
+        }
         /*
         binding.btnGetFoodById.setOnClickListener {
             runBlocking {

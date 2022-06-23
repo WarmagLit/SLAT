@@ -24,6 +24,7 @@ import com.tsu.slat.databinding.ActivityCalendarBinding
 import com.tsu.slat.databinding.CalendarDayLayoutBinding
 import com.tsu.slat.databinding.CalendarHeaderLayoutBinding
 import com.tsu.slat.databinding.FragmentNutritionBinding
+import kotlinx.android.synthetic.main.event_dialog_layout.view.*
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -46,7 +47,7 @@ class CalendarActivity : AppCompatActivity() {
         val picker = TimePicker(this)
         //picker.
         val dialogLayout = layoutInflater.inflate(R.layout.event_dialog_layout, null)
-        val editText = AppCompatEditText(this)
+        val editText = dialogLayout.editText
         val layout = FrameLayout(this).apply {
             // Setting the padding on the EditText only pads the input area
             // not the entire EditText so we wrap it in a FrameLayout.
@@ -62,7 +63,7 @@ class CalendarActivity : AppCompatActivity() {
             .setTitle("Enter event title")
             .setView(layout)
             .setPositiveButton("Save") { _, _ ->
-                saveEvent(editText.toString())
+                saveEvent(editText.text.toString())
                 // Prepare EditText for reuse.
                 editText.setText("")
             }

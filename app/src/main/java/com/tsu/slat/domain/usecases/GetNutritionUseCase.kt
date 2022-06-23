@@ -10,7 +10,7 @@ import com.tsu.slat.presentation.entity.OAuthQuery
 
 class GetNutritionUseCase(private val repository: NutritionRepository) {
 
-    /*
+
     lateinit var foods: MealInfo
 
     var findFood: SearchResponse? = null
@@ -33,5 +33,5 @@ class GetNutritionUseCase(private val repository: NutritionRepository) {
         } else {
             Log.d("Err", "Ошибка")
         }
-    }*/
+    }
 }

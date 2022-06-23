@@ -1,10 +1,16 @@
 package com.tsu.slat.presentation.screens.sign_up
 
+import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.ktx.Firebase
 import com.tsu.slat.R
 import com.tsu.slat.data.entity.User
+import com.tsu.slat.presentation.screens.chat.FriendlyMessageAdapter.Companion.TAG
 import com.tsu.slat.presentation.screens.sign_in.SignInRepository
 import java.util.regex.Pattern
 
@@ -15,6 +21,7 @@ class SignUpViewModel: ViewModel() {
     private val _intentToMenu = MutableLiveData<Boolean>()
     val intentToMenu: LiveData<Boolean>
         get() = _intentToMenu
+
 
     fun signUp(email: String, password: String, nickname: String, toast: (stringId: Int) -> Unit) {
         if (!isSignUpValid(email, password, nickname, toast)) {

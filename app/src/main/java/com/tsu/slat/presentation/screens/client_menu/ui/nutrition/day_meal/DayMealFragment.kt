@@ -20,7 +20,7 @@ import com.tsu.slat.presentation.screens.nutrition_info.NutritionInfoActivity
 import java.time.LocalDate
 
 
-class DayMealFragment : Fragment() {
+class DayMealFragment(day: LocalDate) : Fragment() {
 
     private var _binding: FragmentDayMealBinding? = null
 
@@ -28,7 +28,9 @@ class DayMealFragment : Fragment() {
 
     private val dayMealViewModel by viewModels<DayMealViewModel>()
 
-    private val today = LocalDate.now()
+    private val today = day
+
+    constructor() : this(LocalDate.now() /* other properties default values */)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +55,7 @@ class DayMealFragment : Fragment() {
             //val food = FoodInfoLayoutBinding.inflate(inflater, container, false).root
             //binding.breakfast.foodList.addView(food)
 
-            val currentDate = LocalDate.now()
+            val currentDate = today
             val intent = Intent(requireContext(), FindFoodActivity::class.java)
             intent.putExtra("mealtime", Mealtime.BREAKFAST)
             intent.putExtra("date", currentDate)
@@ -63,7 +65,7 @@ class DayMealFragment : Fragment() {
         binding.lunch.txtAddMeal.isClickable = true
         binding.lunch.txtMealType.text = getText(R.string.lunch)
         binding.lunch.txtAddMeal.setOnClickListener {
-            val currentTime = LocalDate.now()
+            val currentTime = today
             val intent = Intent(requireContext(), FindFoodActivity::class.java)
             intent.putExtra("mealtime", Mealtime.LUNCH)
             intent.putExtra("date", currentTime)
@@ -73,7 +75,7 @@ class DayMealFragment : Fragment() {
         binding.dinner.txtAddMeal.isClickable = true
         binding.dinner.txtMealType.text = getText(R.string.dinner)
         binding.dinner.txtAddMeal.setOnClickListener {
-            val currentTime = LocalDate.now()
+            val currentTime = today
             val intent = Intent(requireContext(), FindFoodActivity::class.java)
             intent.putExtra("mealtime", Mealtime.DINNER)
             intent.putExtra("date", currentTime)
@@ -83,7 +85,7 @@ class DayMealFragment : Fragment() {
         binding.snack.txtAddMeal.isClickable = true
         binding.snack.txtMealType.text = getText(R.string.snack)
         binding.snack.txtAddMeal.setOnClickListener {
-            val currentTime = LocalDate.now()
+            val currentTime = today
             val intent = Intent(requireContext(), FindFoodActivity::class.java)
             intent.putExtra("mealtime", Mealtime.SNACK)
             intent.putExtra("date", currentTime)

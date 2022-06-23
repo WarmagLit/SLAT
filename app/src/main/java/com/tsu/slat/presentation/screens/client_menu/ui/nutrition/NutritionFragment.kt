@@ -30,9 +30,25 @@ class NutritionFragment : Fragment() {
 
         adapter = DayMealAdapter(childFragmentManager);
         binding.viewPager.adapter = adapter
+        binding.viewPager.currentItem = 1
 
+        initListeners()
 
         return binding.root
+    }
+
+    private fun initListeners() {
+        binding.btnGoBack.setOnClickListener {
+            if (binding.viewPager.currentItem != 0) {
+                binding.viewPager.currentItem = binding.viewPager.currentItem - 1
+            }
+        }
+
+        binding.btnGoForward.setOnClickListener {
+            if (binding.viewPager.currentItem != 2) {
+                binding.viewPager.currentItem = binding.viewPager.currentItem + 1
+            }
+        }
     }
 
     override fun onDestroyView() {

@@ -1,15 +1,20 @@
 package com.tsu.slat.presentation.screens.sign_up
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tsu.slat.R
 import com.tsu.slat.databinding.ActivitySignInBinding
 import com.tsu.slat.databinding.ActivitySignUpBinding
 import com.tsu.slat.presentation.screens.chat.ChatActivity
 import com.tsu.slat.presentation.screens.client_menu.ClientMenuActivity
+import com.tsu.slat.presentation.screens.sign_in.SignInActivity
 import com.tsu.slat.presentation.screens.sign_in.SignInViewModel
 
 class SignUpActivity : AppCompatActivity() {
@@ -48,6 +53,11 @@ class SignUpActivity : AppCompatActivity() {
             ) { resId ->
                 Toast.makeText(this, resources.getString(resId), Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.txtAlreadyHaveAnAccount.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
         }
 
 

@@ -14,7 +14,6 @@ import java.util.concurrent.Executor
 class ChatViewModel(private val getChatUseCase: GetChatUseCase, private val chatId: String) : ViewModel() {
 
 
-
     fun sendMessage(text: String) {
         getChatUseCase.sendMessage(text, chatId)
     }
