@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tsu.slat.presentation.screens.chat.ChatActivity
 import com.tsu.slat.databinding.ActivitySignInBinding
 import com.tsu.slat.presentation.screens.client_menu.ClientMenuActivity
+import com.tsu.slat.presentation.screens.sign_up.SignUpActivity
 
 class SignInActivity : AppCompatActivity() {
 
@@ -41,6 +42,11 @@ class SignInActivity : AppCompatActivity() {
             ) { resId ->
                 Toast.makeText(this, resources.getString(resId), Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.btnSignUp.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 

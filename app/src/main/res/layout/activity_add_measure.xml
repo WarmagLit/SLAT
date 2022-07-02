@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.screens.add_measure.AddMeasureActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddMeasure"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:text="Дата"
+        style="@style/text_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/editDate"
+        style="@style/text_bold"
+        android:gravity="center"
+
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:inputType="date"
+        android:layout_marginEnd="80dp"
+        android:textColorHint="#A1A4B2"
+        android:background="@color/browser_actions_bg_grey"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="@+id/txtName" />
+
+    <TextView
+        android:id="@+id/txtAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:text="Вес"
+        style="@style/text_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editAmount"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="80dp"
+        android:background="@color/browser_actions_bg_grey"
+        android:inputType="numberDecimal"
+        android:textColorHint="#A1A4B2"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtAmount" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

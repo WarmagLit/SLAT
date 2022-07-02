@@ -17,11 +17,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.tsu.slat.data.repository.BodyParamsRepository
 import com.tsu.slat.databinding.FragmentProfileBinding
+import com.tsu.slat.presentation.screens.body_parameters.BodyParametersActivity
 import com.tsu.slat.presentation.screens.calendar.CalendarActivity
 import com.tsu.slat.presentation.screens.calendar.CalendarEventsAdapter
 import com.tsu.slat.presentation.screens.client_menu.ui.choose_role.ChooseRoleViewModel
 import com.tsu.slat.presentation.screens.sign_in.SignInActivity
+import com.tsu.slat.presentation.screens.train_parameters.TrainParametersActivity
+import com.tsu.slat.presentation.screens.trainer.TrainerInfoActivity
 
 class ProfileFragment : Fragment() {
 
@@ -63,6 +67,21 @@ class ProfileFragment : Fragment() {
 
         binding.btnSignOut.setOnClickListener {
             signOutDialog.show()
+        }
+
+        binding.btnWorkouts.setOnClickListener {
+            val intent = Intent(requireContext(), TrainParametersActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnTrainer.setOnClickListener {
+            val intent = Intent(requireContext(), TrainerInfoActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnBodyParameters.setOnClickListener {
+            val intent = Intent(requireContext(), BodyParametersActivity::class.java)
+            startActivity(intent)
         }
 
         initObservers()

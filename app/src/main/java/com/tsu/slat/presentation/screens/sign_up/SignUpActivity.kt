@@ -60,7 +60,6 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
     }
 
     public override fun onStart() {

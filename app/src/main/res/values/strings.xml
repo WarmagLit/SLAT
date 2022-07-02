@@ -63,4 +63,8 @@
     <string name="choose_your_role">Выберите свою роль:</string>
     <string name="i_already_have_an_account">I already have an account</string>
     <string name="today">Сегодня</string>
+    <string name="add">Add</string>
+    <string name="workouts">Workouts</string>
+    <string name="_100">100</string>
+    <string name="weight">Weight</string>
 </resources>

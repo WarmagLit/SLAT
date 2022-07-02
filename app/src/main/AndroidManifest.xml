@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Slat.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.screens.add_measure.AddMeasureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.screens.body_params_info.BodyParamsInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.tsu.slat.presentation.screens.add_workout.AddWorkoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.screens.train_parameters.TrainParametersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.screens.body_parameters.BodyParametersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.screens.trainer.TrainerInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.screens.client_menu.ui.choose_role.ChooseRoleActivity"
             android:exported="false" />
         <activity
